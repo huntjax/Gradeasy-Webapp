@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Dashboard</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <h1>This is the Class Creation page</h1>
+        </header>
+        <Section id="classesCreationForm">
+            <h1>
+                Create a Class!
+            </h1>
+            <form action="classCreate/:<%=userid%>" method="POST">
+                <input id="classNameInput" type="text" name="className" placeholder="ClassName"/>
+                <button id="submit">Submit</button> 
+            </form>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>

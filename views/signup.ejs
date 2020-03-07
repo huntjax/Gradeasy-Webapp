@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Home</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav1'); -%>
+
+        <section id="signUpForm">
+            <h1>Signup</h1>
+            <form action="SignupAuth" method="POST">
+                <input id="first-name" type="text" name="firstName" placeholder="firstname"/>
+                <input id="last-name" type="text" name="lastName" placeholder="last name"/>
+                <input id="email-address" type="email" name="email" placeholder="email address"/>
+                <input id="password" type="password" name="password" placeholder="password"/>
+                <input id="password-confirm" type="password" name="passwordConfirm" placeholder="confirm password"/>
+                <button id="submit">Submit</button> 
+            </form>
+        </section>
+        
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>

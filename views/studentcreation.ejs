@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Dashboard</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <h1><%=classInfo[0].ClassName%></h1>
+            <h1>This is the Student Creation page</h1>
+        </header>
+        <Section id="studentCreationForm">
+            <h1>
+                Add a Student!
+            </h1>
+            <form action="studentCreate/:<%=classInfo[0].Classid%>" method="POST">
+                <input id="StudentNameInput" type="text" name="studentName" placeholder="studentName"/>
+                <button id="submit">Submit</button> 
+            </form>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>

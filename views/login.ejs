@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Home</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav1'); -%>
+
+        <section id="loginForm">
+            <h1>Login</h1>
+            <form action="loginAuth" method="POST">
+                <input type="email" name="email" placeholder="email address"/>
+                <input type="password" name="password" placeholder="password"/>
+                <button id="submit">Submit</button>
+            </form>
+        </section>
+        
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>

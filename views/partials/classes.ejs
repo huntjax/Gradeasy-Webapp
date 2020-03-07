@@ -1,0 +1,13 @@
+<Section id="classes">
+        <div>
+            <h2>These are your classes!</h2>
+        </div>
+        <div>
+            <ul class="classes">
+                <li id="classCreation"><a href="classcreation/:<%= userid %>">Create new Class</a></li>
+                <% classes.forEach(function(class){ %>
+                    <li><a href="class/:<%user.Userid%>:<%class.Classid%>""><%=class.ClassName%></a></li>
+                <% }); %>
+            </ul>
+        </div>
+</Section>

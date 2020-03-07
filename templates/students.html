@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Dashboard</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <h1>Class goes here</h1>
+            <h1>This is the Gradeasy student page for <%classid%> </h1>
+        </header>
+        <Section id="Students">
+            <div>
+                <h2>These are your students!</h2>
+            </div>
+            <div>
+                <ul class="students">
+                    <li id="studentCreation"><a href="studentcreation/:<%=Classid%>">Create New Student</a></li>
+                    <% for(var i=students.length-1; i>=0; i--){ %>
+                        <li><%=student[i].StudentName%></a></li>
+                    <% }; %>
+                </ul>
+            </div>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Dashboard</Title>
+    </head>
+
+    <body>
+        <nav>
+            <button id="signout"><a href="login">Signout</a></button> 
+        </nav>
+        <header>
+            <h1>Welcome, </h1>
+            <h1>This is the Gradeasy dashboard</h1>
+        </header>
+        <Section id="classes">
+            <div>
+                <h2>These are your classes!</h2>
+            </div>
+            <div>
+                <ul id="class-list">
+                    <li id="creation">Create New Class </li>
+                    <% data.classes.forEach(function(item){ %>
+                        <li><%= item %></li>
+                    <%});%>
+                </ul>
+            </div>
+        </Section>
+
+        <footer>
+            Made by Hunter Pace for Gradeasy function testing 2020
+        </footer>
+
+        <!-- <script src="../scripts/dashboard.js"></script> -->
+    </body>
+</html>

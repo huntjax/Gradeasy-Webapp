@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Home</Title>
+        <link rel="stylesheet" href="../styles/style.css"/>
+    </head>
+
+    <body>
+        <nav>
+            <div id="logo">
+                <h2>Gradeasy</h2>
+            </div>
+            <ul class="menu">
+                <li id="home"><a href="index">Home</a> </li>
+                <li id="login"><a href="login">Login</a></li>
+                <li id="signup"><a href="signup">Sign Up</a></li>
+                <li id="ContactUs">Contact Us
+                    <ul id="dropdown">
+                        <li>email</li>
+                        <li>LinkdIn</li>
+                        <li>forum</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <section id="form">
+            <h1>Signup</h1>
+            <form action="SignupAuth" method="POST">
+                <input id="first-name" type="text" name="firstName" placeholder="firstname"/>
+                <input id="last-name" type="text" name="lastName" placeholder="last name"/>
+                <input id="email-address" type="email" name="email" placeholder="email address"/>
+                <input id="password" type="password" name="password" placeholder="password"/>
+                <input id="password-confirm" type="password" name="passwordConfirm" placeholder="confirm password"/>
+                <button id="submit">Submit</button> 
+            </form>
+        </section>
+        <footer>
+            Made by Hunter Pace for Gradeasy function testing 2020
+        </footer>
+
+        <!-- <script src="../scripts/signup.js"></script> -->
+    </body>
+</html>
