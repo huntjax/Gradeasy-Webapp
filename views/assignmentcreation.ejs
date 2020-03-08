@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Class Dashboard</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <h1>This is the Assignment Creation page</h1>
+        </header>
+        <Section id="assignmentCreateForm">
+            <h1>
+                Create an Assignment!
+            </h1>
+            <form action="assignmentCreate/:<%=classInfo[0].Classid%>" method="POST">
+                <input id="AssignmentNameInput" type="text" name="assignmentName" placeholder="Assignment Name"/>
+                <input id="AssignmentdescriptionInput" type="text" name="descriptionName" placeholder="Assignment description"/>
+                <p>Need to still add a 10,25,50 question option and make a editable table from that</p>
+                <button id="submit">Submit</button> 
+            </form>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>
