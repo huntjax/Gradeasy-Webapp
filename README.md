@@ -4,14 +4,14 @@
 CheckList: (please # item when finished)
 
 html
-#1. index
-#2. Sign up
-#3. Login
-#4. Teacher Dashboard
-#5. Class Creation
-#6. Class Dashboard
-#7. Student List
-#8. Student Creation
+1. #index
+2. #Sign up
+3. #Login
+4. #Teacher Dashboard
+5. #Class Creation
+6. #Class Dashboard
+7. #Student List
+8. #Student Creation
 9. Assignment Creation
 10. Assignment Edit
 11. Assignment Print/preview
@@ -19,14 +19,14 @@ html
 13. Assignment Results
 
 Node Connection/ Javascript
-#1. index
-#2. Sign up
-#3. Login
-#4. Teacher Dashboard
-#5. Class Creation
-#6. Class Dashboard
-#7. Student List
-#8. Student Creation
+1. #index
+2. #Sign up
+3. #Login
+4. #Teacher Dashboard
+5. #Class Creation
+6. #Class Dashboard
+7. #Student List
+8. #Student Creation
 9. Assignment Creation
 10. Assignment Edit
 11. Assignment Print/preview
