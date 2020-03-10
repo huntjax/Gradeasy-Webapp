@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Class Dashboard</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <h1>This is the Assignment Creation page</h1>
+        </header>
+        <Section id="assignmentCreateForm">
+            <h1>
+                Create an Assignment!
+            </h1>
+            <form action="assignmentCreate/:<%=classInfo[0].Classid%>" method="POST">
+                <input id="AssignmentNameInput" type="text" name="assignmentName" placeholder="Assignment Name"/>
+                <input id="AssignmentdescriptionInput" type="text" name="descriptionName" placeholder="Assignment description"/>
+                <div name="question1"><input type="text" name="question1Answer" placeholder="Answer"/> <input type="text" name="question1Location" placeholder="Location"/></div>
+                <div name="question2"><input type="text" name="question2Answer" placeholder="Answer"/> <input type="text" name="question2Location" placeholder="Location"/></div>
+                <div name="question3"><input type="text" name="question3Answer" placeholder="Answer"/> <input type="text" name="question3Location" placeholder="Location"/></div>
+                <div name="question4"><input type="text" name="question4Answer" placeholder="Answer"/> <input type="text" name="question4Location" placeholder="Location"/></div>
+                <div name="question5"><input type="text" name="question5Answer" placeholder="Answer"/> <input type="text" name="question5Location" placeholder="Location"/></div>
+                <div name="question6"><input type="text" name="question6Answer" placeholder="Answer"/> <input type="text" name="question6Location" placeholder="Location"/></div>
+                <div name="question7"><input type="text" name="question7Answer" placeholder="Answer"/> <input type="text" name="question7Location" placeholder="Location"/></div>
+                <div name="question8"><input type="text" name="question8Answer" placeholder="Answer"/> <input type="text" name="question8Location" placeholder="Location"/></div>
+                <div name="question9"><input type="text" name="question9Answer" placeholder="Answer"/> <input type="text" name="question9Location" placeholder="Location"/></div>
+                <div name="question10"><input type="text" name="question10Answer" placeholder="Answer"/> <input type="text" name="question10Location" placeholder="Location"/></div>
+                <button id="submit">Submit</button> 
+            </form>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>
