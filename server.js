@@ -10,10 +10,10 @@ var ejs = require('ejs');
 
 //Database Connection Functions
 var connection = mysql.createConnection({
-    host            : 'localhost',
-    user            : 'root',
-    password        : 'Prehysteria!3',
-    database        : 'gradeasytest'
+    host            : 'gradeasy-db.ctg4zrkh4rc2.us-east-1.rds.amazonaws.com',
+    user            : 'admin',
+    password        : 'GradeasyTest',
+    database        : 'gradeasy'
 });
 
 connection.connect(function(err){
@@ -242,6 +242,17 @@ app.post('/class/assignmentcreation/assignmentCreate/:id', function(request, res
                     console.log("Created assignment " + AssignmentNameInput + " for class with id " + classid + "n/The assignment description is " + AssignmentDescriptionInput);
                     response.end();
                 });
+                connection.query('SELECT Assignmentid FROM Assignments WHERE Classid = ? AND AssignmentName = ?', [classid,AssignmentNameInput], function(error, Assignmentid) {
+                    console.log(Assignmentid[0].Assignmentid)
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '1', request.body.question1Answer, request.body.question1Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data for "+ AssignmentNameInput);
+                        response.end();
+                    });
+
+                });
+                
+
             } else {
                 response.end();
                 console.log("You already have an assignment with that name");
