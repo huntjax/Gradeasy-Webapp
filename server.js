@@ -246,10 +246,54 @@ app.post('/class/assignmentcreation/assignmentCreate/:id', function(request, res
                     console.log(Assignmentid[0].Assignmentid)
                     connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '1', request.body.question1Answer, request.body.question1Location], function(error, results){
                         if(error) throw error;
-                        console.log("Created meta data for "+ AssignmentNameInput);
+                        console.log("Created meta data q1 for "+ AssignmentNameInput);
                         response.end();
                     });
-
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '2', request.body.question2Answer, request.body.question2Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q2 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '3', request.body.question3Answer, request.body.question3Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q3 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '4', request.body.question4Answer, request.body.question4Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q4 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '5', request.body.question5Answer, request.body.question5Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q5 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '6', request.body.question6Answer, request.body.question6Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q6 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '7', request.body.question7Answer, request.body.question7Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data 97 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '8', request.body.question8Answer, request.body.question8Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q8 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '9', request.body.question9Answer, request.body.question9Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q9 for "+ AssignmentNameInput);
+                        response.end();
+                    });
+                    connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '10', request.body.question10Answer, request.body.question10Location], function(error, results){
+                        if(error) throw error;
+                        console.log("Created meta data q10 for "+ AssignmentNameInput);
+                        response.end();
+                    });
                 });
                 
 
