@@ -27,7 +27,7 @@ Node Connection/ Javascript
 6. #Class Dashboard
 7. #Student List
 8. #Student Creation
-9. Assignment Creation
+9. #Assignment Creation
 10. Assignment Edit
 11. Assignment Print/preview
 12. Assignment Grade
