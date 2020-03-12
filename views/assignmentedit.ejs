@@ -9,6 +9,14 @@
         <%- include('partials/nav2'); -%>
 
         <header>
+            <ul>
+                <li>
+                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">/Dashboard</a></h4>
+                </li>
+                <li>
+                    <h4><a href="../:<%=classInfo[0].Classid%>">/<%=classInfo[0].ClassName%></a></h4>
+                </li>
+            </ul>
             <h1>This is the Assignment Edit page</h1>
         </header>
 
