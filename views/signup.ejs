@@ -1,26 +1,55 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Gradeasy Home</Title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    
+        <title>Sign Up</title>
     </head>
 
     <body>
 
         <%- include('partials/nav1'); -%>
 
-        <section id="signUpForm">
-            <h1>Signup</h1>
-            <form action="SignupAuth" method="POST">
-                <input id="first-name" type="text" name="firstName" placeholder="firstname"/>
-                <input id="last-name" type="text" name="lastName" placeholder="last name"/>
-                <input id="email-address" type="email" name="email" placeholder="email address"/>
-                <input id="password" type="password" name="password" placeholder="password"/>
-                <input id="password-confirm" type="password" name="passwordConfirm" placeholder="confirm password"/>
-                <button id="submit">Submit</button> 
-            </form>
-        </section>
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height:100vh">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="SignupAuth" method= "POST" autocomplete="off">
+                                <div class="form-group">
+                                    <img class="mb-4 centerThis" src="" alt="GradeasyLogo" width="72" height="72">
+                                    <h1 class="h3 mb-3 font-weight-heavy">Sign Up</h1>
+                                    <div class="form-group">
+                                        <input type="text" id="inputFName" name= "firstName" class="form-control" placeholder="First name" required>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <input type="text" id="inputLName" name = "lastName" class="form-control" placeholder="Last name" required>
+                                    </div><br>
+                                    <input type="email" id="inputEmail" name = "email" class="form-control" placeholder="Email address" required autofocus>
+                                </div><br>
+                                <div class="form-group">
+                                    <input type="password" id="inputPassword" name= "password" class="form-control" placeholder="Password" required>
+                                </div><br>
+                                <input type="password" id="inputCPassword" name = "passwordConfirm" class="form-control" placeholder="Confirm Password" required>
+                                <button id="sendlogin" class="btn btn-primary">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <%- include('partials/footer'); -%>
 
     </body>
+
+    <!-- Bootstrap core JavaScript -->
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </html>
