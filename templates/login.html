@@ -1,41 +1,91 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Gradeasy Home</Title>
-        <link rel="stylesheet" href="../styles/style.css"/>
+        <Title>Gradeasy Login</Title>
+        <link rel="stylesheet" href="../styles/login.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
     <body>
-        <nav>
-            <div id="logo">
-                <h2>Gradeasy</h2>
+
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="index">Gradeasy</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index">Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="signup">Sign Up</a>
+              </li>
+            <div class="btn-group">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contact Us
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="https://www.google.com/search?q=email&oq=email&aqs=chrome.0.69i59j69i57j69i60l3j69i65j69i61j69i60.2357j0j7&sourceid=chrome&ie=UTF-8">Email</a>
+                <a class="dropdown-item" href="https://tinyurl.com/wfopnda">LinkedIn</a>
+              </div>
             </div>
-            <ul class="menu">
-                <li id="home"><a href="index">Home</a> </li>
-                <li id="login"><a href="login">Login</a></li>
-                <li id="signup"><a href="signup">Sign Up</a></li>
-                <li id="ContactUs">Contact Us
-                    <ul id="dropdown">
-                        <li>email</li>
-                        <li>LinkdIn</li>
-                        <li>forum</li>
-                    </ul>
-                </li>
             </ul>
+
+          </div>
         </nav>
 
-        <section id="form">
+<div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="loginAuth" method="POST" autocomplete="off">
+                            <div class="form-group">
+                                <img class="mb-4 centerThis" src="" alt="GradeasyLogo" width="72" height="72">
+                                <h1 class="h3 mb-3 font-weight-heavy">Please sign in below</h1>
+                                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            </div>
+                            <button type="button" id="submit" class="btn btn-primary">login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--     <footer class="container">
+      <p>&copy; Made by Hunter Pace for Gradeasy function testing 2020</p>
+    </footer> -->
+
+
+<!--         <section id="form">
             <h1>Login</h1>
             <form action="loginAuth" method="POST">
                 <input type="email" name="email" placeholder="email address"/>
                 <input type="password" name="password" placeholder="password"/>
                 <button id="submit">Submit</button>
             </form>
-        </section>
-        <footer>
-            Made by Hunter Pace for Gradeasy function testing 2020
-        </footer>
+        </section> -->
+
 
         <!-- <script src="../scripts/login.js"></script> -->
-    </body>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
 </html>
