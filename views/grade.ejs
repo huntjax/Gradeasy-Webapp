@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Gradeasy Grade page</Title>
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Upload a file for <%=assignment[0].AssignmentName%></h1>
+        </header>
+        
+        <form action="uploadfile/:<%=assignment[0].Assignmentid%>" method="POST" enctype="multipart/form-data">
+        <input type="text" name="studentname" placeholder="Student Name">
+        <input type="file" name="filetoupload"><br>
+        <button id="upload">upload</button> 
+        </form>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>

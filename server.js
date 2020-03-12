@@ -4,8 +4,10 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var path = require('path');
 var http = require('http');
+//var formidable = require('formidable');
 var fs = require('fs');
 var ejs = require('ejs');
+upload = require("express-fileupload");
 
 //Database Pool Connection Functions
 var pool = mysql.createPool({
@@ -26,6 +28,7 @@ pool.getConnection(function(error, connection){
 
 
 var app = express();
+app.use(upload());
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -338,7 +341,7 @@ app.get('/class/assignmentedit/:id',function(request,response){
         if (error) throw error;
         connection.query('SELECT * FROM Assignments WHERE  Assignmentid = ?', [request.originalUrl.substring(request.originalUrl.indexOf(':')+1)], function(error, Assignment) {
             console.log(Assignment[0].Assignmentid);
-            var assignment =Assignment
+            var assignment = Assignment
             connection.query('SELECT * FROM Assignment_Meta WHERE  Assignmentid = ?', [request.originalUrl.substring(request.originalUrl.indexOf(':')+1)], function(error, Assignment_Meta) {
                 //console.log(Assignment_Meta);
                 var assignment_meta = JSON.parse(JSON.stringify(Assignment_Meta));
@@ -447,4 +450,50 @@ app.post('/class/assignmentedit/assignmentEdit/:id', function(request, response)
     console.log(question8Answer +" : " + question8Location);
     console.log(question9Answer +" : " + question9Location);
     console.log(question10Answer +" : " + question10Location);
+});
+
+
+//Print Functions go here
+
+
+
+//Grade functions go here
+app.get('/class/assignmentGrade/:id',function(request,response){
+
+    assignmentid = request.originalUrl.substring(request.originalUrl.indexOf(':')+1);
+    pool.getConnection(function(error, connection){
+        if (error) throw error;
+        connection.query('SELECT * FROM Assignments WHERE Assignmentid = ?', [assignmentid], function(error, Assignment) {
+            response.render('grade', {classInfo: request.session.class, assignment: Assignment});
+            connection.release();
+        });
+    });
+});
+app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
+    
+    assignmentid = request.originalUrl.substring(request.originalUrl.indexOf(':')+1);
+    studentName = request.body.studentname;
+
+    pool.getConnection(function(error, connection){
+        if (error) throw error;
+        connection.query('SELECT * FROM Students WHERE StudentName=?', [studentName], function(error, student) {
+            if (student.length > 0){
+                var studentid= student[0].StudentClassid;
+
+                if(request.files){
+                    var file = request.files.filetoupload;
+                    var filename = assignmentid+"_"+studentName+studentid+".png"
+                    file.mv("scannerFiles/"+filename, function(error){
+                        if(error) throw error;
+                        response.redirect('/class/assignmentGrade/:'+assignmentid);
+                });
+                }
+            }else{
+                console.log("That student doesn\'t exist")
+                response.redirect('/class/assignmentGrade/:'+assignmentid);
+            }
+            connection.release();
+        });
+    });
+
 });
