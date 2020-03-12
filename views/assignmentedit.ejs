@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Class Dashboard</Title>
+    </head>
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <h1>This is the Assignment Edit page</h1>
+        </header>
+
+        <Section id="assignmentEditForm">
+            <h1>
+                Edit an Assignment!
+            </h1>
+            <form action="assignmentEdit/:<%=assignment[0].Assignmentid%>" method="POST">
+                <input id="AssignmentNameInput" type="text" name="assignmentName" value="<%=assignment[0].AssignmentName%>"/>
+                <input id="AssignmentdescriptionInput" type="text" name="descriptionName" value="<%=assignment[0].AssignmentDescription%>"/>
+                <div name="question1"><input type="text" name="question1Answer" value="<%=assignment_meta[0].Answer%>"/> <input type="text" name="question1Location" value="<%=assignment_meta[0].Location%>"/></div>
+                <div name="question2"><input type="text" name="question2Answer" value="<%=assignment_meta[1].Answer%>"/> <input type="text" name="question2Location" value="<%=assignment_meta[1].Location%>"/></div>
+                <div name="question3"><input type="text" name="question3Answer" value="<%=assignment_meta[2].Answer%>"/> <input type="text" name="question3Location" value="<%=assignment_meta[2].Location%>"/></div>
+                <div name="question4"><input type="text" name="question4Answer" value="<%=assignment_meta[3].Answer%>"/> <input type="text" name="question4Location" value="<%=assignment_meta[3].Location%>"/></div>
+                <div name="question5"><input type="text" name="question5Answer" value="<%=assignment_meta[4].Answer%>"/> <input type="text" name="question5Location" value="<%=assignment_meta[4].Location%>"/></div>
+                <div name="question6"><input type="text" name="question6Answer" value="<%=assignment_meta[5].Answer%>"/> <input type="text" name="question6Location" value="<%=assignment_meta[5].Location%>"/></div>
+                <div name="question7"><input type="text" name="question7Answer" value="<%=assignment_meta[6].Answer%>"/> <input type="text" name="question7Location" value="<%=assignment_meta[6].Location%>"/></div>
+                <div name="question8"><input type="text" name="question8Answer" value="<%=assignment_meta[7].Answer%>"/> <input type="text" name="question8Location" value="<%=assignment_meta[7].Location%>"/></div>
+                <div name="question9"><input type="text" name="question9Answer" value="<%=assignment_meta[8].Answer%>"/> <input type="text" name="question9Location" value="<%=assignment_meta[8].Location%>"/></div>
+                <div name="question10"><input type="text" name="question10Answer" value="<%=assignment_meta[9].Answer%>"/> <input type="text" name="question10Location" value="<%=assignment_meta[9].Location%>"/></div>
+                <button id="submit">Submit</button> 
+            </form>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>
