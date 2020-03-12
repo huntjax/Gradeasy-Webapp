@@ -34,9 +34,9 @@ Node Connection/ Javascript
 13. Assignment Results
 
 Css/ Styling
-1. index
+1. #index
 2. Sign up
-3. Login
+3. #Login
 4. Teacher Dashboard
 5. Class Creation
 6. Class Dashboard

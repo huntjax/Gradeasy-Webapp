@@ -16,6 +16,15 @@ var pool = mysql.createPool({
     database        : 'gradeasy'
 });
 
+pool.getConnection(function(error, connection){
+    if (error) throw error;
+    console.log("connected to pool")
+    connection.release();
+}); 
+
+
+
+
 var app = express();
 app.use(session({
     secret: 'secret',

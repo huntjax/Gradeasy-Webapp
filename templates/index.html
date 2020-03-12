@@ -1,31 +1,160 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- CDN LINK FOR BOOTSTRAP CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="../styles/style.css">
         <Title>Gradeasy Home</Title>
-        <link rel="stylesheet" href="../styles/style.css"/>
+
     </head>
 
-    <body>
+<body>
         
-        <nav>
-            <div id="logo">
-                <h2>Gradeasy</h2>
-            </div>
-            <ul class="menu">
-                <li id="home"><a href="index">Home</a> </li>
-                <li id="login"><a href="login">Login</a></li>
-                <li id="signup"><a href="signup">Sign Up</a></li>
-                <li id="ContactUs">Contact Us
-                    <ul id="dropdown">
-                        <li>email</li>
-                        <li>LinkdIn</li>
-                        <li>forum</li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="index">Gradeasy</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <header>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signup">Sign Up</a>
+          </li>
+        <div class="btn-group">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Contact Us
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="https://www.google.com/search?q=email&oq=email&aqs=chrome.0.69i59j69i57j69i60l3j69i65j69i61j69i60.2357j0j7&sourceid=chrome&ie=UTF-8">Email</a>
+            <a class="dropdown-item" href="https://tinyurl.com/wfopnda">LinkedIn</a>
+          </div>
+        </div>
+        </ul>
+
+      </div>
+    </nav>
+
+
+    <main role="main">
+
+      <!-- MAIN JUMBOTRON -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3 center">Welcome to Gradeasy</h1>
+          <p class="center">Gradeasy is a A.I. powered grading tool used to help teachers and students get a better grip on their schooling experience.</p>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-6 center">
+            <h2>How We Started</h2>
+            <p>We made a school project</p>
+            <p><a class="btn btn-info btn-lg" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-6 center">
+            <h2>What We Are</h2>
+            <p>Students, basically.</p>
+            <p><a class="btn btn-info btn-lg" href="#" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+
+    <hr>
+
+    <br><br><br><br><br><br><br>
+
+    <div class="jumbotron" id="aboutUsHeader">
+        <div class="container">
+          <h1 class="display-4" >Meet The Team</h1>
+        </div>
+        <br>
+
+        <!-- INFORMATION ABOUT ALL OF US -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Hunter Pace</h2>
+            <p class="lead"></p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="https://tinyurl.com/rh9w3kz" alt="PUT IMAGE HERE">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">David Shryock</h2>
+            <p class="lead"></p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="https://tinyurl.com/rz7y5hj" alt="PUT IMAGE HERE">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Dawson Webb</h2>
+            <p class="lead"></p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="https://tinyurl.com/rh9w3kz" alt="PUT IMAGE HERE">
+          </div>
+        </div>
+
+         <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Valentina Ibarra</h2>
+            <p class="lead"></p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="https://tinyurl.com/rz7y5hj" alt="PUT IMAGE HERE">
+          </div>
+        </div>
+
+         <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Kaylan Durham</h2>
+            <p class="lead"></p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="https://tinyurl.com/rh9w3kz" alt="PUT IMAGE HERE">
+          </div>
+        </div>
+        <hr class="featurette-divider">
+
+      </div>
+      <hr>
+
+    </div> 
+
+</main>
+
+
+<!--         <header>
             <h1>Welcome to Gradeasy!</h1>
         </header>
         <section id="How-We-Started">
@@ -37,11 +166,18 @@
             <h2>Who Are We</h2>
             <p>Students, basically.</p>
             <button id="LearnMore2">Learn More</button>
-        </section>
-        <footer>
-            Made by Hunter Pace for Gradeasy function testing 2020
-        </footer>
+        </section> -->
+
+
+    <footer class="container">
+      <p>&copy; Made by Hunter Pace for Gradeasy function testing 2020</p>
+    </footer>
 
         <!-- <script src="../scripts/index.js"></script> -->
     </body>
+
+<!-- CDN LINKS FOR BOOTSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>
