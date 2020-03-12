@@ -1,17 +1,31 @@
-<nav id="nav1">
-    <div id="logo">
-        <h2>Gradeasy</h2>
-    </div>
-    <ul class="menu">
-        <li id="home"><a href="index">Home</a> </li>
-        <li id="login"><a href="login">Login</a></li>
-        <li id="signup"><a href="signup">Sign Up</a></li>
-        <li id="ContactUs">Contact Us
-            <ul id="dropdown">
-                <li>email</li>
-                <li>LinkdIn</li>
-                <li>forum</li>
-            </ul>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="index">Gradeasy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index">Home<span class="sr-only">(current)</span></a>
         </li>
-    </ul>
-</nav>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signup">Sign Up</a>
+        </li>
+      <div class="btn-group">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contact Us
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="https://www.google.com/search?q=email&oq=email&aqs=chrome.0.69i59j69i57j69i60l3j69i65j69i61j69i60.2357j0j7&sourceid=chrome&ie=UTF-8">Email</a>
+          <a class="dropdown-item" href="https://tinyurl.com/wfopnda">LinkedIn</a>
+        </div>
+      </div>
+      </ul>
+
+    </div>
+  </nav>

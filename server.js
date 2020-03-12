@@ -28,11 +28,11 @@ var pool = mysql.createPool({
     password        : 'GradeasyTest',
     database        : 'gradeasy'
 });
-pool.getConnection(function(error, connection){
+/* pool.getConnection(function(error, connection){
     if (error) throw error;
-
+    console.log("connected to pool")
     connection.release();
-});
+}); */
 
 
 
