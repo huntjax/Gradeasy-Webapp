@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Gradeasy Dashboard</Title>
+        <Title>Class Dashboard</Title>
     </head>
 
     <body>
@@ -30,6 +30,15 @@
             <div>
                 <ul class="Assignments">
                     <li id="assignmentCreation"><a href="assignmentcreation/:<%= classInfo[0].Classid %>">Create New Assignment</a></li>
+                    <% for(var i=assignments.length-1; i>=0; i--){ %>
+                        <li><%=assignments[i].AssignmentName%></li>
+                        <ul class="AssignmentOptions">
+                            <li id="assignmentEdit"><a href="assignmentEdit/:<%=assignments[i].Assignmentid%>">Edit</a></li>
+                            <li id="assignmentPrint"><a href="assignmentPrint/:<%=assignments[i].Assignmentid%>">Print</a></li>
+                            <li id="assignmentGrade"><a href="assignmentGrade/:<%=assignments[i].Assignmentid%>">Grade</a></li>
+                            <li id="assignmentResults"><a href="assignmentResults/:<%=assignments[i].Assignmentid%>">Results</a></li>
+                        </ul>
+                    <% }; %>
                 </ul>
             </div>
             
