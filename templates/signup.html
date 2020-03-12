@@ -1,44 +1,108 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <Title>Gradeasy Home</Title>
-        <link rel="stylesheet" href="../styles/style.css"/>
-    </head>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
-    <body>
-        <nav>
-            <div id="logo">
-                <h2>Gradeasy</h2>
+    <title>Sign Up</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Gradeasy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logInPage.html">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="signUpPage.html">Sign Up</a>
+            </li>
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Contact Us
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="https://www.google.com/search?q=email&oq=email&aqs=chrome.0.69i59j69i57j69i60l3j69i65j69i61j69i60.2357j0j7&sourceid=chrome&ie=UTF-8">Email</a>
+                        <a class="dropdown-item" href="https://tinyurl.com/wfopnda">LinkedIn</a>
+                    </div>
+
+                </div>
+
+
+
+        </ul>
+
+
+
+
+    </div>
+</nav>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="SignupAuth" autocomplete="off">
+                        <div class="form-group">
+                            <img class="mb-4 centerThis" src="" alt="GradeasyLogo" width="72" height="72">
+                            <h1 class="h3 mb-3 font-weight-heavy">Sign Up</h1>
+                            <div class="form-group">
+                                <input type="text" id="inputFName" name= "firstName" class="form-control" placeholder="First name" required>
+                            </div><br>
+                            <div class="form-group">
+                                <input type="text" id="inputLName" name = "lastName" class="form-control" placeholder="Last name" required>
+                            </div><br>
+                            <input type="email" id="inputEmail" name = "email" class="form-control" placeholder="Email address" required autofocus>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="password" id="inputPassword" name= "password" class="form-control" placeholder="Password" required>
+                        </div><br>
+                        <input type="password" id="inputCPassword" name = "passwordConfirm" class="form-control" placeholder="Confirm Password" required>
+
+                </div>
+
+                <button type="button" id="sendlogin" class="btn btn-primary">Sign Up</button>
+                </form>
             </div>
-            <ul class="menu">
-                <li id="home"><a href="index">Home</a> </li>
-                <li id="login"><a href="login">Login</a></li>
-                <li id="signup"><a href="signup">Sign Up</a></li>
-                <li id="ContactUs">Contact Us
-                    <ul id="dropdown">
-                        <li>email</li>
-                        <li>LinkdIn</li>
-                        <li>forum</li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+        </div>
+    </div>
+</div>
+</div>
 
-        <section id="form">
-            <h1>Signup</h1>
-            <form action="SignupAuth" method="POST">
-                <input id="first-name" type="text" name="firstName" placeholder="firstname"/>
-                <input id="last-name" type="text" name="lastName" placeholder="last name"/>
-                <input id="email-address" type="email" name="email" placeholder="email address"/>
-                <input id="password" type="password" name="password" placeholder="password"/>
-                <input id="password-confirm" type="password" name="passwordConfirm" placeholder="confirm password"/>
-                <button id="submit">Submit</button> 
-            </form>
-        </section>
-        <footer>
-            Made by Hunter Pace for Gradeasy function testing 2020
-        </footer>
+<hr>
 
-        <!-- <script src="../scripts/signup.js"></script> -->
-    </body>
+<br>
+
+<hr>
+
+</div> <!-- /container -->
+
+</main>
+
+<br><br><br>
+
+<footer class="container">
+    <p>&copy; Gradeasy 2020</p>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
 </html>
