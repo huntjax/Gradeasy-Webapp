@@ -7,19 +7,6 @@ var http = require('http');
 var fs = require('fs');
 var ejs = require('ejs');
 
-
-/* //Database Connection Functions
-var connection = mysql.createConnection({
-    host            : 'gradeasy-db.ctg4zrkh4rc2.us-east-1.rds.amazonaws.com',
-    user            : 'admin',
-    password        : 'GradeasyTest',
-    database        : 'gradeasy'
-});
-connection.connect(function(err){
-    if (err) throw err;
-});
- */
-
 //Database Pool Connection Functions
 var pool = mysql.createPool({
     connectionLimit : 10,
@@ -30,9 +17,9 @@ var pool = mysql.createPool({
 });
 pool.getConnection(function(error, connection){
     if (error) throw error;
-
+    console.log("connected to pool")
     connection.release();
-});
+}); 
 
 
 
