@@ -74,7 +74,6 @@ app.post('/signupAuth', function(request, response){
                     if (results.length === 0) {  
                         connection.query('INSERT INTO Users (FirstName, LastName, EmailAddress, Password) Values(?,?,?,?)', [firstNameInput, lastNameInput, emailInput, passwordInput], function(error, results){
                             if(error) throw error;
-                            console.log("registered account:\n  -"+firstNameInput+" "+lastNameInput+"\n  -"+emailInput+"\n  -"+passwordInput);
                         });
                         response.redirect('/login');
                     } else {
@@ -113,7 +112,6 @@ app.post('/loginAuth', function(request, response){
                 if (results.length > 0) {  
                     request.session.loggedin = true;
                     request.session.user = JSON.parse(JSON.stringify(results));
-                    console.log("Logging in :" + emailInput + " " + passwordInput)
                     response.redirect('/dashboard/:'+request.session.user[0].Userid);
                 } else {
                     console.log("Incorrect email or password");
@@ -168,7 +166,6 @@ app.post('/dashboard/classcreation/classCreate/:id', function(request, response)
                 if (results.length === 0) {  
                     connection.query('INSERT INTO Classes (Userid, ClassName) Values(?,?)', [userid,classNameInput], function(error, results){
                         if(error) throw error;
-                        console.log("Created class " + classNameInput +" for user with id "+ userid);
                         response.redirect('/dashboard/:'+userid);
                     });
                 } else {
@@ -241,7 +238,6 @@ app.post('/class/students/studentcreation/studentCreate/:id', function(request, 
                 if (results.length === 0) {  
                     connection.query('INSERT INTO Students (Classid, StudentName) Values(?,?)', [classid,studentNameInput], function(error, results){
                         if(error) throw error;
-                        console.log("Created student " + studentNameInput +" for class with id "+ classid);
                         response.redirect('/class/students/:'+classid);
                     });
                 } else {
@@ -259,7 +255,7 @@ app.post('/class/students/studentcreation/studentCreate/:id', function(request, 
 
 //Assignment Creation
 app.get('/class/assignmentcreation/:id',function(request,response){
-    response.render('assignmentcreation', {classInfo: request.session.class});
+    response.render('assignmentcreation', {user: request.session.user, classInfo: request.session.class});
 
 });
 app.post('/class/assignmentcreation/assignmentCreate/:id', function(request, response){
@@ -275,49 +271,38 @@ app.post('/class/assignmentcreation/assignmentCreate/:id', function(request, res
                 if (results.length === 0) {  
                     connection.query('INSERT INTO Assignments (Classid, AssignmentName, AssignmentDescription) Values(?,?,?)', [classid,AssignmentNameInput,AssignmentDescriptionInput], function(error, results){
                         if(error) throw error;
-                        console.log("Created assignment " + AssignmentNameInput + " for class with id " + classid + "\nThe assignment description is " + AssignmentDescriptionInput);
+
                     });
                     connection.query('SELECT Assignmentid FROM Assignments WHERE Classid = ? AND AssignmentName = ?', [classid,AssignmentNameInput], function(error, Assignmentid) {
-                        console.log(Assignmentid[0].Assignmentid)
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '1', request.body.question1Answer, request.body.question1Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q1 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '2', request.body.question2Answer, request.body.question2Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q2 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '3', request.body.question3Answer, request.body.question3Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q3 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '4', request.body.question4Answer, request.body.question4Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q4 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '5', request.body.question5Answer, request.body.question5Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q5 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '6', request.body.question6Answer, request.body.question6Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q6 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '7', request.body.question7Answer, request.body.question7Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data 97 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '8', request.body.question8Answer, request.body.question8Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q8 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '9', request.body.question9Answer, request.body.question9Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q9 for "+ AssignmentNameInput);
                         });
                         connection.query('INSERT INTO Assignment_Meta (Assignmentid, question, Answer, Location) Values(?,?,?,?)', [Assignmentid[0].Assignmentid, '10', request.body.question10Answer, request.body.question10Location], function(error, results){
                             if(error) throw error;
-                            console.log("Created meta data q10 for "+ AssignmentNameInput);
                         });
                     });
                     response.redirect('/class/:'+classid);
@@ -340,13 +325,10 @@ app.get('/class/assignmentedit/:id',function(request,response){
     pool.getConnection(function(error, connection){
         if (error) throw error;
         connection.query('SELECT * FROM Assignments WHERE  Assignmentid = ?', [request.originalUrl.substring(request.originalUrl.indexOf(':')+1)], function(error, Assignment) {
-            console.log(Assignment[0].Assignmentid);
             var assignment = Assignment
             connection.query('SELECT * FROM Assignment_Meta WHERE  Assignmentid = ?', [request.originalUrl.substring(request.originalUrl.indexOf(':')+1)], function(error, Assignment_Meta) {
-                //console.log(Assignment_Meta);
                 var assignment_meta = JSON.parse(JSON.stringify(Assignment_Meta));
-                //console.log(assignment_meta);
-                response.render('assignmentedit', {classInfo: request.session.class, assignment: assignment, assignment_meta: assignment_meta});
+                response.render('assignmentedit', {user: request.session.user, classInfo: request.session.class, assignment: assignment, assignment_meta: assignment_meta});
             });
         });
         connection.release();
@@ -366,48 +348,37 @@ app.post('/class/assignmentedit/assignmentEdit/:id', function(request, response)
 
                     connection.query('UPDATE Assignments SET AssignmentName=?, AssignmentDescription=? Where Assignmentid=?', [AssignmentNameInput,AssignmentDescriptionInput, assignmentid], function(error, results){
                         if(error) throw error;
-                        console.log("Edited assignment id" + assignmentid +"with name " + AssignmentNameInput + " for class with id " + classid + "\nThe assignment description is " + AssignmentDescriptionInput);
                     });
 
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question1Answer, request.body.question1Location, assignmentid, '1'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q1 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question2Answer, request.body.question2Location, assignmentid, '2'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q2 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question3Answer, request.body.question3Location, assignmentid, '3'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q3 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question4Answer, request.body.question4Location, assignmentid, '4'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q4 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question5Answer, request.body.question5Location, assignmentid, '5'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q5 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question6Answer, request.body.question6Location, assignmentid, '6'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q6 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question7Answer, request.body.question7Location, assignmentid, '7'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q7 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question8Answer, request.body.question8Location, assignmentid, '8'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q8 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question9Answer, request.body.question9Location, assignmentid, '9'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q9 for "+ AssignmentNameInput);
                     });
                     connection.query('UPDATE Assignment_Meta SET Answer=?, Location=? WHERE Assignmentid=? and Question=?', [request.body.question10Answer, request.body.question10Location, assignmentid, '10'], function(error, results){
                         if(error) throw error;
-                        console.log("Edited meta data q10 for "+ AssignmentNameInput);
                     });
 
 
@@ -419,37 +390,6 @@ app.post('/class/assignmentedit/assignmentEdit/:id', function(request, response)
             });
             connection.release();
         });   
-
-    var question1Answer = request.body.question1Answer;
-    var question1Location = request.body.question1Location;
-    var question2Answer = request.body.question2Answer;
-    var question2Location = request.body.question2Location;
-    var question3Answer = request.body.question3Answer;
-    var question3Location = request.body.question3Location;
-    var question4Answer = request.body.question4Answer;
-    var question4Location = request.body.question4Location;
-    var question5Answer = request.body.question5Answer;
-    var question5Location = request.body.question5Location;
-    var question6Answer = request.body.question6Answer;
-    var question6Location = request.body.question6Location;
-    var question7Answer = request.body.question7Answer;
-    var question7Location = request.body.question7Location;
-    var question8Answer = request.body.question8Answer;
-    var question8Location = request.body.question8Location;
-    var question9Answer = request.body.question9Answer;
-    var question9Location = request.body.question9Location;
-    var question10Answer = request.body.question10Answer;
-    var question10Location = request.body.question10Location;
-    console.log(question1Answer +" : " + question1Location);
-    console.log(question2Answer +" : " + question2Location);
-    console.log(question3Answer +" : " + question3Location);
-    console.log(question4Answer +" : " + question4Location);
-    console.log(question5Answer +" : " + question5Location);
-    console.log(question6Answer +" : " + question6Location);
-    console.log(question7Answer +" : " + question7Location);
-    console.log(question8Answer +" : " + question8Location);
-    console.log(question9Answer +" : " + question9Location);
-    console.log(question10Answer +" : " + question10Location);
 });
 
 
@@ -464,7 +404,7 @@ app.get('/class/assignmentGrade/:id',function(request,response){
     pool.getConnection(function(error, connection){
         if (error) throw error;
         connection.query('SELECT * FROM Assignments WHERE Assignmentid = ?', [assignmentid], function(error, Assignment) {
-            response.render('grade', {classInfo: request.session.class, assignment: Assignment});
+            response.render('grade', {user: request.session.user, classInfo: request.session.class, assignment: Assignment});
             connection.release();
         });
     });
