@@ -29,6 +29,7 @@ pool.getConnection(function(error, connection){
 
 var app = express();
 app.use(upload());
+app.use(express.static('./public'));
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -241,8 +242,8 @@ app.post('/class/students/studentcreation/studentCreate/:id', function(request, 
                         response.redirect('/class/students/:'+classid);
                     });
                 } else {
-                    response.end();
                     console.log("student already exists in database");
+                    response.end();
                 }
             });
             connection.release();
