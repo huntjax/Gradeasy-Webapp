@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Class Dashboard</Title>
+      <Title>Class Dashboard</Title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   <!-- jquery CDN -->
+      <script src="/scripts/class.js"></script>
     </head>
 
     <body>
 
-        <%- include('partials/nav2'); -%>
+        <%- include('partials/nav2'); -%>   
 
         <header>
             <ul>
@@ -40,11 +42,16 @@
                         </ul>
                     <% }; %>
                 </ul>
+                
             </div>
             
         </Section>
+
+        <!-- button added for testing purposes -->
+        <input type="button" value="Print Answer Sheets" onClick="draw()">
 
         <%- include('partials/footer'); -%>
 
     </body>
 </html>
+
