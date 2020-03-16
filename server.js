@@ -8,6 +8,7 @@ var http = require('http');
 var fs = require('fs');
 var ejs = require('ejs');
 upload = require("express-fileupload");
+//const spawn = require("child_process").spawn;
 
 //Database Pool Connection Functions
 var pool = mysql.createPool({
@@ -423,11 +424,29 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
 
                 if(request.files){
                     var file = request.files.filetoupload;
-                    var filename = assignmentid+"_"+studentName+studentid+".png"
-                    file.mv("scannerFiles/"+filename, function(error){
+                    var filename = assignmentid+"_"+studentName+studentid+".png";
+                    var filepath = "ai_folder/scanner_pictures/"+filename;
+                    file.mv(filepath, function(error){
                         if(error) throw error;
-                        response.redirect('/class/assignmentGrade/:'+assignmentid);
-                });
+                    });
+                    const { spawn } = require('child_process');
+                    const py = spawn('python', ['ai_folder/HelloWorld.py', "scanner_pictures/"+filename]);
+
+                    py.stdout.on('data', function(data) {
+                        console.log("Item Graded. Results:")
+                        console.log(data.toString()[0]);
+                        console.log(data.toString()[2]);
+                        console.log(data.toString()[4]);
+                        console.log(data.toString()[6]);
+                        console.log(data.toString()[8]);
+                        console.log(data.toString()[10]);
+                        console.log(data.toString()[12]);
+                        console.log(data.toString()[14]);
+                        console.log(data.toString()[16]);
+                        console.log(data.toString()[18]);
+                    });
+                    
+                response.redirect('/class/assignmentGrade/:'+assignmentid);
                 }
             }else{
                 console.log("That student doesn\'t exist")
