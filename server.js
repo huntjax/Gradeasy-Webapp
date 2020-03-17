@@ -434,16 +434,43 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
 
                     py.stdout.on('data', function(data) {
                         console.log("Item Graded. Results:")
-                        console.log(data.toString()[0]);
-                        console.log(data.toString()[2]);
-                        console.log(data.toString()[4]);
-                        console.log(data.toString()[6]);
-                        console.log(data.toString()[8]);
-                        console.log(data.toString()[10]);
-                        console.log(data.toString()[12]);
-                        console.log(data.toString()[14]);
-                        console.log(data.toString()[16]);
-                        console.log(data.toString()[18]);
+                        var answerData = data.toString().toLowerCase().replace(/\r?\n|\r/g,' ');
+                        var answers = answerData.split(' ');
+                        answers.pop;
+                        console.log(answers);
+
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'1', answers[0]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'2', answers[1]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'3', answers[2]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'4', answers[3]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'5', answers[4]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'6', answers[5]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'7', answers[6]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'8', answers[7]], function(error, results){
+                            if(error) throw error
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'9', answers[8]], function(error, results){
+                            if(error) throw error;
+                        });
+                        connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer) Values(?,?,?,?)', [studentid,assignmentid,'10', answers[9]], function(error, results){
+                            if(error) throw error;
+                        });
+
+
                     });
                     
                 response.redirect('/class/assignmentGrade/:'+assignmentid);
