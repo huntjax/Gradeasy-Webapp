@@ -27,7 +27,7 @@
                 <ul class="students">
                     <li id="studentCreation"><a href="studentcreation/:<%=classInfo[0].Classid%>">Create New Student</a></li>
                     <% for(var i=studentList.length-1; i>=0; i--){ %>
-                        <li><%=studentList[i].StudentName%></a></li>
+                        <li><%=studentList[i].StudentName%>    <%=studentList[i].Grade%></a></li>
                     <% }; %>
                 </ul>
             </div>
