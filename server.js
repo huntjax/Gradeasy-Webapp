@@ -399,7 +399,7 @@ app.post('/class/assignmentedit/assignmentEdit/:id', function(request, response)
 
 
 
-//Grade functions go here
+//Grade functions
 app.get('/class/assignmentGrade/:id',function(request,response){
 
     assignmentid = request.originalUrl.substring(request.originalUrl.indexOf(':')+1);
@@ -509,5 +509,31 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
             connection.release();
         });
     });
+});
 
+//result Functions
+app.get('/class/assignmentResults/:id',function(request,response){
+
+    assignmentid = request.originalUrl.substring(request.originalUrl.indexOf(':')+1);
+    pool.getConnection(function(error, connection){
+        if (error) throw error;
+        var resultData = new Array();
+        connection.query('SELECT * FROM Student_Assignments WHERE Assignmentid = ?', [assignmentid], function(error, assignments) {
+            if (error) throw error;
+            for(i=0;i<10;i++){
+                connection.query('SELECT * FROM Student_Meta WHERE Assignmentid = ? and Question=? and Correct=?', [assignmentid, i+1, '1'], function(error, results) {
+                    if (error) throw error;
+                    resultData.push(results.length / assignments.length * 100);
+                });  
+            }
+            connection.query('SELECT * FROM Assignment_Meta WHERE Assignmentid = ?', [assignmentid], function(error, AssignmentMetaInfo) {
+                if (error) throw error;
+                connection.query('SELECT * FROM Assignments WHERE Assignmentid = ?', [assignmentid], function(error, AssignmentInfo) {
+                    if (error) throw error;
+                    response.render('results', {user: request.session.user, classInfo: request.session.class, assignmentInfo: AssignmentInfo, assignmentMetaInfo: AssignmentMetaInfo, assignmentsNum: assignments.length, data: resultData});
+                    connection.release();
+                });
+            });  
+        });  
+    });
 });

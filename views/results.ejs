@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Class Dashboard</Title>
+    </head>
+    
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <ul>
+                <li>
+                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">/Dashboard</a></h4>
+                </li>
+                <li>
+                    <h4><a href="../:<%=classInfo[0].Classid%>">/<%=classInfo[0].ClassName%></a></h4>
+                </li>
+            </ul>
+            <h1><%=classInfo[0].ClassName%>/<%=assignmentInfo[0].AssignmentName%> results page</h1>
+        </header>
+        <Section id="Results">
+            <div>
+                <h2>Percent of correct responses out of <%=assignmentsNum%></h2>
+            </div>
+            <div>
+                <ul class="resultData">
+                    
+                    <% for(var i=0;i<assignmentMetaInfo.length;i++){ %>
+                        <li><p>Question: <%=assignmentMetaInfo[i].Question%>
+                                <br>% Correct: <%=data[i]%>
+                                <br>Answer Location: <%=assignmentMetaInfo[i].Location%></p>
+                        </li>
+                    <% }; %>
+                </ul>
+            </div>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>
