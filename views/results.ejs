@@ -21,7 +21,7 @@
             </ul>
             <h1><%=classInfo[0].ClassName%>/<%=assignmentInfo[0].AssignmentName%> results page</h1>
         </header>
-        <Section id="Results">
+        <!-- <Section id="Results">
             <div>
                 <h2>Percent of correct responses out of <%=assignmentsNum%></h2>
             </div>
@@ -36,28 +36,30 @@
                     <% }; %>
                 </ul>
             </div>
-        </Section>
+        </Section> -->
         <Section id="graph">
             <script type="text/javascript">
                 //var dataVar = document.getElementById('mydiv').dataset.data;
                 google.charts.load('current', {packages: ['corechart', 'bar']});
                 google.charts.setOnLoadCallback(drawAnnotations);
                 var myVar = '<%=data%>';
+                var myLocation = '<%=locations%>';
 
                 function drawAnnotations() {
                 var indexedData = myVar.replace(/,/g,' ').split(' ');
+                var indexedLocation = myLocation.replace(/,/g,' ').split(' ');
                 var data = google.visualization.arrayToDataTable([
-                    ['Question','PrecentCorrect'],
-                    ['Question 1',parseFloat(indexedData[0])],
-                    ['Question 2', parseFloat(indexedData[1])],
-                    ['Question 3', parseFloat(indexedData[2])],
-                    ['Question 4', parseFloat(indexedData[3])],
-                    ['Question 5', parseFloat(indexedData[4])],
-                    ['Question 6', parseFloat(indexedData[5])],
-                    ['Question 7', parseFloat(indexedData[6])],
-                    ['Question 8', parseFloat(indexedData[7])],
-                    ['Question 9', parseFloat(indexedData[8])],
-                    ['Question 10', parseFloat(indexedData[9])]
+                    ['Question','PercentCorrect',{role:'annotation'}],
+                    ['Question 1',parseFloat(indexedData[0]), indexedLocation[0]],
+                    ['Question 2', parseFloat(indexedData[1]), indexedLocation[1]],
+                    ['Question 3', parseFloat(indexedData[2]), indexedLocation[2]],
+                    ['Question 4', parseFloat(indexedData[3]), indexedLocation[3]],
+                    ['Question 5', parseFloat(indexedData[4]), indexedLocation[4]],
+                    ['Question 6', parseFloat(indexedData[5]), indexedLocation[5]],
+                    ['Question 7', parseFloat(indexedData[6]), indexedLocation[6]],
+                    ['Question 8', parseFloat(indexedData[7]), indexedLocation[7]],
+                    ['Question 9', parseFloat(indexedData[8]), indexedLocation[8]],
+                    ['Question 10', parseFloat(indexedData[9]), indexedLocation[9]]
                 ]);
     
                 var options = {
