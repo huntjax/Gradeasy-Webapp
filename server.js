@@ -395,7 +395,17 @@ app.post('/class/assignmentedit/assignmentEdit/:id', function(request, response)
 
 
 //Print Functions go here
+app.get('/class/assignmentPrint/:id',function(request,response){
 
+    assignmentid = request.originalUrl.substring(request.originalUrl.indexOf(':')+1);
+    pool.getConnection(function(error, connection){
+        if (error) throw error;
+        connection.query('SELECT * FROM Assignments WHERE Assignmentid = ?', [assignmentid], function(error, Assignment) {
+            response.render('print', {user: request.session.user, classInfo: request.session.class, assignment: Assignment});
+            connection.release();
+        });
+    });
+});
 
 
 //Grade functions go here
