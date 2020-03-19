@@ -526,11 +526,15 @@ app.get('/class/assignmentResults/:id',function(request,response){
                     resultData.push(results.length / assignments.length * 100);
                 });  
             }
+            var locations = new Array();
             connection.query('SELECT * FROM Assignment_Meta WHERE Assignmentid = ?', [assignmentid], function(error, AssignmentMetaInfo) {
                 if (error) throw error;
+                for(i=0;i<10;i++){
+                    locations.push(AssignmentMetaInfo[i].Location)
+                }  
                 connection.query('SELECT * FROM Assignments WHERE Assignmentid = ?', [assignmentid], function(error, AssignmentInfo) {
                     if (error) throw error;
-                    response.render('results', {user: request.session.user, classInfo: request.session.class, assignmentInfo: AssignmentInfo, assignmentMetaInfo: AssignmentMetaInfo, assignmentsNum: assignments.length, data: resultData});
+                    response.render('results', {user: request.session.user, classInfo: request.session.class, assignmentInfo: AssignmentInfo, assignmentMetaInfo: AssignmentMetaInfo, assignmentsNum: assignments.length, data: resultData, locations: locations});
                     connection.release();
                 });
             });  

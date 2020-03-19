@@ -2,6 +2,7 @@
 <html>
     <head>
         <Title>Class Dashboard</Title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     
 
@@ -35,6 +36,65 @@
                     <% }; %>
                 </ul>
             </div>
+        </Section>
+        <Section id="graph">
+            <script type="text/javascript">
+                //var dataVar = document.getElementById('mydiv').dataset.data;
+                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.setOnLoadCallback(drawAnnotations);
+                var myVar = '<%=data%>';
+
+                function drawAnnotations() {
+                var indexedData = myVar.replace(/,/g,' ').split(' ');
+                var data = google.visualization.arrayToDataTable([
+                    ['Question','PrecentCorrect'],
+                    ['Question 1',parseFloat(indexedData[0])],
+                    ['Question 2', parseFloat(indexedData[1])],
+                    ['Question 3', parseFloat(indexedData[2])],
+                    ['Question 4', parseFloat(indexedData[3])],
+                    ['Question 5', parseFloat(indexedData[4])],
+                    ['Question 6', parseFloat(indexedData[5])],
+                    ['Question 7', parseFloat(indexedData[6])],
+                    ['Question 8', parseFloat(indexedData[7])],
+                    ['Question 9', parseFloat(indexedData[8])],
+                    ['Question 10', parseFloat(indexedData[9])]
+                ]);
+    
+                var options = {
+                    title: 'Percent Correct For Each Question',
+                    chartArea: {width: '50%'},
+                    annotations: {
+                    alwaysOutside: true,
+                        textStyle: {
+                            fontSize: 12,
+                            auraColor: 'none',
+                            color: '#555'
+                        },
+                        boxStyle: {
+                            stroke: '#ccc',
+                            strokeWidth: 1,
+                            gradient: {
+                            color1: '#f3e5f5',
+                                color2: '#f3e5f5',
+                                x1: '0%', y1: '0%',
+                                x2: '100%', y2: '100%'
+                            }
+                        }
+                    },
+                    hAxis: {
+                        title: 'Percent Correct',
+                        minValue: 0,
+                        maxValue: 100
+                    },
+                    vAxis: {
+                        title: 'Question'
+                    }
+                };
+                var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+                }
+            </script>
+            <div id="chart_div" style="width: 900px; height: 500px;"></div>
         </Section>
 
         <%- include('partials/footer'); -%>
