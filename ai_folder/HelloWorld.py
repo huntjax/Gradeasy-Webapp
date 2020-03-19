@@ -11,7 +11,7 @@ path = sys.argv[1]
 #AI print what it reads
 
 #fake result for testing
-grade = ['a','a','a','a','a','test','test','test','Wrong','Wrong']
+grade = ['a','a','a','Wrong','Wrong','test','test','test','test','test']
 for i in grade:
     print(i)
 sys.stdout.flush
