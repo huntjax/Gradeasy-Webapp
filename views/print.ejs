@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Class Dashboard</Title>
+        <Title>Class Dashboard </Title>
     </head>
 
     <body>
         <script>
 
-                    function draw(){
-
                     myWindow = window.open("", "_parent", "width=2408, height=3508"); // "_parent" neccessary width and height are set to that of a normal paper with default DPI printing
-                    myWindow.document.write('<html><h1 font="30px Arial" id="title"></h1></html>') // insert assignment name here
-                    myWindow.document.getElementById('title') = '<%=assignment[0].AssignmentName%>';
+                    myWindow.document.write('<html><h1 font="30px Arial"><%=assignment[0].AssignmentName%></h1></html>') // insert assignment name here
                     myWindow.document.write('<canvas id="myCanvas" height=2408 width=3508 style="border:2px solid #white;"></canvas>')
 
                     var numberOfQuestions = 10;
@@ -54,9 +51,6 @@
 
                     myWindow.print()
 
-                }
-                            
-                            //script code
-                        </script>
+            </script>
     </body>
 </html>
