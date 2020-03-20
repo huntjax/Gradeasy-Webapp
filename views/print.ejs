@@ -10,17 +10,18 @@
                     myWindow = window.open("", "_parent", "width=2408, height=3508"); // "_parent" neccessary width and height are set to that of a normal paper with default DPI printing
                     myWindow.document.write('<html><h1 font="30px Arial"><%=assignment[0].AssignmentName%></h1></html>') // insert assignment name here
                     myWindow.document.write('<canvas id="myCanvas" height=2408 width=3508 style="border:2px solid #white;"></canvas>')
-
+                    
                     var numberOfQuestions = 10;
 
                         var d = myWindow.document.getElementById("myCanvas");
-                        var dtx = d.getContext("2d");
-
+                        var dtx = d.getContext("2d")
+                        ;
                         d.width = 3508;
                         d.height = 2408;
 
                         dtx.canvas.width  = 3508;
                         dtx.canvas.height = 2408;
+
 
                     for(let i = 0; i < numberOfQuestions; i++){
                         if (i!=0) {
@@ -54,3 +55,13 @@
             </script>
     </body>
 </html>
+
+ <style type="text/css">
+ 
+ @media print {
+ 
+ #header, #footer {display:none;}
+ 
+ }
+
+ </style>
