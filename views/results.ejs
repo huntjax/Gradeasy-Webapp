@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Class Dashboard</Title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    
+
+    <body>
+
+        <%- include('partials/nav2'); -%>
+
+        <header>
+            <ul>
+                <li>
+                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">/Dashboard</a></h4>
+                </li>
+                <li>
+                    <h4><a href="../:<%=classInfo[0].Classid%>">/<%=classInfo[0].ClassName%></a></h4>
+                </li>
+            </ul>
+            <h1><%=classInfo[0].ClassName%>/<%=assignmentInfo[0].AssignmentName%> results page</h1>
+        </header>
+        <!-- <Section id="Results">
+            <div>
+                <h2>Percent of correct responses out of <%=assignmentsNum%></h2>
+            </div>
+            <div>
+                <ul class="resultData">
+                    
+                    <% for(var i=0;i<assignmentMetaInfo.length;i++){ %>
+                        <li><p>Question: <%=assignmentMetaInfo[i].Question%>
+                                <br>% Correct: <%=data[i]%>
+                                <br>Answer Location: <%=assignmentMetaInfo[i].Location%></p>
+                        </li>
+                    <% }; %>
+                </ul>
+            </div>
+        </Section> -->
+        <Section id="graph">
+            <script type="text/javascript">
+                //var dataVar = document.getElementById('mydiv').dataset.data;
+                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.setOnLoadCallback(drawAnnotations);
+                var myVar = '<%=data%>';
+                var myLocation = '<%=locations%>';
+
+                function drawAnnotations() {
+                var indexedData = myVar.replace(/,/g,' ').split(' ');
+                var indexedLocation = myLocation.replace(/,/g,' ').split(' ');
+                var data = google.visualization.arrayToDataTable([
+                    ['Question','PercentCorrect',{role:'annotation'}],
+                    ['Question 1',parseFloat(indexedData[0]), indexedLocation[0]],
+                    ['Question 2', parseFloat(indexedData[1]), indexedLocation[1]],
+                    ['Question 3', parseFloat(indexedData[2]), indexedLocation[2]],
+                    ['Question 4', parseFloat(indexedData[3]), indexedLocation[3]],
+                    ['Question 5', parseFloat(indexedData[4]), indexedLocation[4]],
+                    ['Question 6', parseFloat(indexedData[5]), indexedLocation[5]],
+                    ['Question 7', parseFloat(indexedData[6]), indexedLocation[6]],
+                    ['Question 8', parseFloat(indexedData[7]), indexedLocation[7]],
+                    ['Question 9', parseFloat(indexedData[8]), indexedLocation[8]],
+                    ['Question 10', parseFloat(indexedData[9]), indexedLocation[9]]
+                ]);
+    
+                var options = {
+                    title: 'Percent Correct For Each Question',
+                    chartArea: {width: '50%'},
+                    annotations: {
+                    alwaysOutside: true,
+                        textStyle: {
+                            fontSize: 12,
+                            auraColor: 'none',
+                            color: '#555'
+                        },
+                        boxStyle: {
+                            stroke: '#ccc',
+                            strokeWidth: 1,
+                            gradient: {
+                            color1: '#f3e5f5',
+                                color2: '#f3e5f5',
+                                x1: '0%', y1: '0%',
+                                x2: '100%', y2: '100%'
+                            }
+                        }
+                    },
+                    hAxis: {
+                        title: 'Percent Correct',
+                        minValue: 0,
+                        maxValue: 100
+                    },
+                    vAxis: {
+                        title: 'Question'
+                    }
+                };
+                var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+                }
+            </script>
+            <div id="chart_div" style="width: 900px; height: 500px;"></div>
+        </Section>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>
