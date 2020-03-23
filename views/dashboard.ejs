@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="../styles/style.css">
         <Title>Gradeasy Dashboard</Title>
     </head>
 
@@ -9,8 +14,7 @@
         <%- include('partials/nav2'); -%>
 
         <header>
-            <h1>Welcome, <%= user.FirstName %></h1>
-            <h1>This is the Gradeasy User Dashboard</h1>
+            <h1>Welcome, <%= user.FirstName %>! This is the Gradeasy User Dashboard</h1>
         </header>
         
         <Section id="classes">
