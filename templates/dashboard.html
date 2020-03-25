@@ -1,35 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <Title>Gradeasy Dashboard</Title>
-    </head>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <Title>Gradeasy Dashboard</Title>
+</head>
 
-    <body>
-        <nav>
-            <button id="signout"><a href="login">Signout</a></button> 
-        </nav>
-        <header>
-            <h1>Welcome, </h1>
-            <h1>This is the Gradeasy dashboard</h1>
-        </header>
-        <Section id="classes">
-            <div>
-                <h2>These are your classes!</h2>
-            </div>
-            <div>
-                <ul id="class-list">
-                    <li id="creation">Create New Class </li>
-                    <% data.classes.forEach(function(item){ %>
-                        <li><%= item %></li>
-                    <%});%>
-                </ul>
-            </div>
-        </Section>
+<body>
 
-        <footer>
-            Made by Hunter Pace for Gradeasy function testing 2020
-        </footer>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Gradeasy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <!-- <script src="../scripts/dashboard.js"></script> -->
-    </body>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logInPage.html">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="signUpPage.html">Sign Up</a>
+            </li>
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Contact Us
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="https://www.google.com/search?q=email&oq=email&aqs=chrome.0.69i59j69i57j69i60l3j69i65j69i61j69i60.2357j0j7&sourceid=chrome&ie=UTF-8">Email</a>
+                        <a class="dropdown-item" href="https://tinyurl.com/wfopnda">LinkedIn</a>
+                    </div>
+                </div>
+        </ul>
+
+    </div>
+</nav>
+
+
+
+<nav>
+    <button id="signout"><a href="login">Signout</a></button>
+</nav>
+<header>
+    <br> <br>
+    <h1>Welcome, </h1>
+    <h1>This is the Gradeasy dashboard</h1>
+    <h2>These are your classes!</h2>
+
+<Section id="classes">
+    <div>
+
+    </div>
+    <div>
+        <ul id="class-list">
+            <li id="creation">Create New Class </li>
+            <% data.classes.forEach(function(item){ %>
+            <li><%= item %></li>
+            <%});%>
+        </ul>
+    </div>
+</Section>
+</header>
+<br> <br>
+<footer>
+    Made by Hunter Pace for Gradeasy function testing 2020
+</footer>
+
+<!-- <script src="../scripts/dashboard.js"></script> -->
+<!-- Bootstrap core JavaScript -->
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
 </html>
+© 2020 GitHub, Inc.
