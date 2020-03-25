@@ -22,42 +22,14 @@
 
         <section id="Students">
             <div class="row">
-                <p class="col-sm-6 center"><a href="../../dashboard/:<%=user[0].Userid%>">Back to Dashboard</a></p>
-                <p class="col-sm-6 center"><a href="../:<%=classInfo[0].Classid%>">Back to Class Page</a></p>
+                <p class="col-sm-4 center"><a href="../../dashboard/:<%=user[0].Userid%>">Back to Dashboard</a></p>
+                <p class="col-sm-4 center"><a href="../:<%=classInfo[0].Classid%>">Back to Class Page</a></p>
+                <p class="col-sm-4 center"><a href="studentcreation/:<%=classInfo[0].Classid%>">Add a student!</a></p>
             </div>
         </section>
-
-        <!-- <header>
-            <ul>
-                <li>
-                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">/Dashboard</a></h4>
-                </li>
-                <li>
-                    <h4><a href="../:<%=classInfo[0].Classid%>">/<%=classInfo[0].ClassName%></a></h4>
-                </li>
-            </ul>
-            <h1>This is the Gradeasy student page for <%=classInfo[0].ClassName%> </h1>
-        </header> -->
-
-
-
-
-            <!-- <div>
-                <ul class="students">
-                    <li id="studentCreation"><a href="studentcreation/:<%=classInfo[0].Classid%>">Create New Student</a></li>
-                    <% for(var i=studentList.length-1; i>=0; i--){ %>
-                        <li><%=studentList[i].StudentName%>    <%=studentList[i].Grade%></a></li>
-                    <% }; %>
-                </ul>
-            </div> -->
-
             <br>
 
-            <h2 class="text-center"><a href="studentcreation/:<%=classInfo[0].Classid%>">Add a student!</a></h2>
-
         <div class="container">
-
-             
 
             <table class="table table-bordered">
               <thead>
@@ -84,4 +56,30 @@
 
     </body>
 </html>
+
+
+
+        <!-- <header>
+            <ul>
+                <li>
+                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">/Dashboard</a></h4>
+                </li>
+                <li>
+                    <h4><a href="../:<%=classInfo[0].Classid%>">/<%=classInfo[0].ClassName%></a></h4>
+                </li>
+            </ul>
+            <h1>This is the Gradeasy student page for <%=classInfo[0].ClassName%> </h1>
+        </header> -->
+
+
+
+
+            <!-- <div>
+                <ul class="students">
+                    <li id="studentCreation"><a href="studentcreation/:<%=classInfo[0].Classid%>">Create New Student</a></li>
+                    <% for(var i=studentList.length-1; i>=0; i--){ %>
+                        <li><%=studentList[i].StudentName%>    <%=studentList[i].Grade%></a></li>
+                    <% }; %>
+                </ul>
+            </div> -->
 
