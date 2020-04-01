@@ -46,6 +46,12 @@ app.listen(3000, function(){
     console.log("Server is running on port 3000");
 }); 
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }   
+
 
 //Index Functions
 app.get('/', function(request,response){
@@ -424,22 +430,153 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
 
                 if(request.files){
                     var file = request.files.filetoupload;
-                    var filename = "test.png";
-                    var filepath = "ai_folder/SimpleHTR/data/"+filename;
-                    file.mv(filepath, function(error){
+                    var filename = assignmentid+"_"+studentName.replace(" ","")+"_"+studentid+".png";
+                    var scannerPath = 'scanner_pictures/'+filename;
+                    var filepath = "ai_folder/scanner_pictures/"+filename;
+                    
+                    /* file.mv(filepath, function(error){
                         if(error) throw error;
-                    });
-                    const { spawn } = require('child_process');
-                    const py = spawn('python', ['ai_folder/HelloWorld.py', "scanner_pictures/"+filename]);
-                    //const py = spawn('python3', ['ai_folder/SimpleHTR/src/main.py', "--wordbeamsearch"]);
+                    }); */
+                    
+                    var answers= ""
+                    /* const { spawn } = require('child_process');
+                    const py = spawn('python3', ['ai_folder/HelloWorld.py', scannerPath]);
                     py.stdout.on('data', function(data,error) {
+
+                        recognized = data.toString("utf8").toLowerCase()
+                        console.log(recognized);
+                        var newRecognized = "";
+                        newRecognized+=recognized.substring(recognized.indexOf("recognized: ")+13, recognized.indexOf("\"", recognized.indexOf("recognized: ")+13));
+                        index=0;
+                        for(i=0;i<10;i++){
+                            if(i==0){
+                                newRecognized += recognized.substring(recognized.indexOf("recognized: \"")+13, recognized.indexOf("\"", recognized.indexOf("recognized: \"") + 13));
+                                index = recognized.indexOf("\"", recognized.indexOf("recognized: \"") + 13) + 1;
+                            }else{
+                                newRecognized += " "+recognized.substring(recognized.indexOf("recognized: \"", index), recognized.indexOf("\"", recognized.indexOf("recognized: \"", index)+13));
+                                index = recognized.indexOf("\"", recognized.indexOf("recognized: \"", index)+1)
+                            }
+                            
+                        }
+
+                        answers += newRecognized+" ";
+
+                        console.log(answers);
+                        
+                    }); */
+
+                    const exec = require('child_process').execSync;
+                    var pythonData = exec("Python3 ai_folder/HelloWorld.py "+filepath);
+                    var recognized = pythonData.toString("utf8").toLowerCase();
+                    var newRecognized = "";
+                    for(i=0;i<10;i++){
+                        if(i==0){
+                            newRecognized += recognized.substring(recognized.indexOf("recognized: \"")+13, recognized.indexOf("\"", recognized.indexOf("recognized: \"") + 13));
+                            index = recognized.indexOf("\"", recognized.indexOf("recognized: \"") + 13) + 1;
+                        }else{
+                            newRecognized += " "+recognized.substring(recognized.indexOf("recognized: \"", index)+13, recognized.indexOf("\"", recognized.indexOf("recognized: \"", index)+13));
+                            index = recognized.indexOf("\"", recognized.indexOf("recognized: \"", index)+14);
+                        }
+                        
+                    }
+
+                    var answers = newRecognized.split(" ");
+                    console.log("Answers:");
+                    console.log(answers);
+
+                        connection.query('Select * FROM Assignment_Meta Where Assignmentid=?', [assignmentid], function(error, results){
+                            if(error) throw error;
+                            var correctScore = 0;
+                            connection.query('Select * FROM Student_Meta Where studentid = ? and Assignmentid=?', [studentid,assignmentid], function(error, studentMeta){
+                                if(error) throw error;
+                                if(studentMeta.length>0){
+                                    for(i=0;i<10;i++){
+                                        if(results[i].Answer === answers[i]){
+                                            connection.query('Update Student_Meta Set StudentAnswer=?,Correct=? WHERE Studentid=? and Assignmentid=? and question=?', [answers[i], '1', studentid,assignmentid, i+1], function(error, results){
+                                                if(error) throw error;
+                                            });
+                                            correctScore+=1;
+                                        }
+                                        else{
+                                            connection.query('Update Student_Meta Set StudentAnswer=?,Correct=? WHERE Studentid=? and Assignmentid=? and question=?', [answers[i], '0', studentid,assignmentid, i+1], function(error, results){
+                                                if(error) throw error;
+                                            });
+                                        }  
+                                    } 
+                                } 
+                                else{
+                                    for(i=0;i<10;i++){
+                                        if(results[i].Answer === answers[i]){
+                                            connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer, Correct) Values(?,?,?,?,?)', [studentid,assignmentid, i+1, answers[i], '1'], function(error, results){
+                                                if(error) throw error;
+                                            });
+                                            correctScore+=1;
+                                        }
+                                        else{
+                                            connection.query('INSERT INTO Student_Meta (Studentid, Assignmentid, question, StudentAnswer, Correct) Values(?,?,?,?,?)', [studentid,assignmentid, i+1, answers[i], '0'], function(error, results){
+                                                if(error) throw error;
+                                            });
+                                        }  
+                                    }
+                                }
+                                correctScore = correctScore*100/10;
+                                var grade = correctScore;
+                                connection.query('Select * FROM Student_Assignments WHERE Studentid=? AND Assignmentid=?',[studentid, assignmentid],function(error,studentAssignments){
+                                    if(studentAssignments.length > 0){
+                                        connection.query('UPDATE Student_Assignments SET Grade=? WHERE Studentid=? AND Assignmentid=?', [grade, studentid, assignmentid], function(error, results){
+                                            if(error) throw error;
+                                        });
+                                    }
+                                    else{
+                                        connection.query('INSERT INTO Student_Assignments (Studentid, Assignmentid, Grade) Values(?,?,?)', [studentid,assignmentid, grade], function(error, results){
+                                            if(error) throw error;
+                                        });
+                                    }
+                                    connection.query('Select * FROM Student_Assignments WHERE Studentid=?',[studentid],function(error,grades){
+                                        var classGrade = 0;
+                                        for(i=0;i<grades.length;i++){
+                                            classGrade+= grades[i].Grade;
+                                        }
+                                        classGrade = classGrade/grades.length;
+                                        connection.query('UPDATE Students SET Grade=? WHERE StudentClassid=?', [classGrade,studentid], function(error, results){
+                                            if(error) throw error;
+                                        });
+                                    });
+                                });
+                            }); 
+                        });    
+                    response.redirect('/class/assignmentGrade/:'+assignmentid);
+                }
+            }else{
+                console.log("That student doesn\'t exist")
+                response.redirect('/class/assignmentGrade/:'+assignmentid);
+            }
+            connection.release();
+        });
+    });
+});
+                    
+                    /* py.stdout.on('data', function(data,error) {
                         if (error) throw error;
-                        //var recognized = data.toString().toLowerCase()
-                        //var newRecognized = recognized.substring(recognized.indexOf("\"")+1, recognized.indexOf("\"", recognized.indexOf("\"") + 1));
-                        //console.log(newRecognized);
-                        var answerData = data.toString().toLowerCase().replace(/\r?\n|\r/g,' ');
-                        var answers = answerData.split(' ');
-                        answers.pop;
+                        var recognized = data.toString().toLowerCase()
+                        var newRecognized = "";
+                        index=0;
+                        for(i=0;i<10;i++){
+                            if(i==0){
+                                newRecognized += recognized.substring(recognized.indexOf("\"")+1, recognized.indexOf("\"", recognized.indexOf("\"") + 1));
+                                index = recognized.indexOf("\"", recognized.indexOf("\"") + 1) + 1;
+                            }else{
+                                newRecognized += " "+recognized.substring(recognized.indexOf("\"", index), recognized.indexOf("\"", recognized.indexOf("\"", index)+1));
+                                index = recognized.indexOf("\"", recognized.indexOf("\"", index)+1)
+                            }
+                            
+                        }
+                        //newRecognized = recognized.substring(recognized.indexOf("\"")+1, recognized.indexOf("\"", recognized.indexOf("\"") + 1));
+                        //var answerData = data.toString().toLowerCase().replace(/\r?\n|\r/g,' ');
+                        var answers = newRecognized.split(' ');
+                        console.log("Answers:");
+                        console.log(answers);
+                        //answers.pop;
                         
                         connection.query('Select * FROM Assignment_Meta Where Assignmentid=?', [assignmentid], function(error, results){
                             if(error) throw error;
@@ -513,7 +650,7 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
             connection.release();
         });
     });
-});
+}); */
 
 //result Functions
 app.get('/class/assignmentResults/:id',function(request,response){
