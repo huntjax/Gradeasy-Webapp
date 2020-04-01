@@ -30,12 +30,11 @@
         <br><br>
 
 
-          <div class="container">
+          <!-- <div class="container">
 
             <% for(var i=assignments.length-1; i>=0; i--){ %> 
-
-            <table class="table table-bordered">
-              <thead>
+            <table class="table">
+              <thead class="thead-dark">
                 <tr>
                   <th><%=assignments[i].AssignmentName%></th>
                   <th><a href="assignmentEdit/:<%=assignments[i].Assignmentid%>">Edit</a></th>
@@ -48,12 +47,49 @@
             <% }; %>
           </div>
 
-          <br><br><br><br>
-          <br><br><br><br>
-          <br><br><br><br>
+          <br><br><br><br> -->
           
 
-        <%- include('partials/footer'); -%>
+<div class="container">
+	<div class="row">
+		
+        
+        <div class="col-md-12">
+            <!-- <h1 class="center"><%=classInfo[0].ClassName%></h1> -->
+            <!-- <br> -->
+        <div class="table-responsive">
+            
+    <table id="mytable" class="table table-bordred table-striped">   
+        <thead>
+            <th>Assignment Name</th>
+            <th>Due Date</th>
+            <th>Edit</th>
+            <th>Print</th>
+            <th>Grade</th>
+            <th>Results</th>
+        </thead>
+<tbody>
+    <% for(var i=assignments.length-1; i>=0; i--){ %>
+ <tr>
+    <td><%=assignments[i].AssignmentName%></td>
+    <td></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentEdit/:<%=assignments[i].Assignmentid%>" role="button"><span class="octicon-checklist"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentPrint/:<%=assignments[i].Assignmentid%>" role="button"><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentGrade/:<%=assignments[i].Assignmentid%>" role="button"><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentResults/:<%=assignments[i].Assignmentid%>" role="button"><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+    </tr>
+    <% }; %>
+
+    </tbody>
+</table>
+            </div>
+        </div>
+	</div>
+</div>
+
+
+<%- include('partials/footer'); -%>
+
 
     </body>
 </html>
