@@ -439,31 +439,6 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                     }); */
                     
                     var answers= ""
-                    /* const { spawn } = require('child_process');
-                    const py = spawn('python3', ['ai_folder/HelloWorld.py', scannerPath]);
-                    py.stdout.on('data', function(data,error) {
-
-                        recognized = data.toString("utf8").toLowerCase()
-                        console.log(recognized);
-                        var newRecognized = "";
-                        newRecognized+=recognized.substring(recognized.indexOf("recognized: ")+13, recognized.indexOf("\"", recognized.indexOf("recognized: ")+13));
-                        index=0;
-                        for(i=0;i<10;i++){
-                            if(i==0){
-                                newRecognized += recognized.substring(recognized.indexOf("recognized: \"")+13, recognized.indexOf("\"", recognized.indexOf("recognized: \"") + 13));
-                                index = recognized.indexOf("\"", recognized.indexOf("recognized: \"") + 13) + 1;
-                            }else{
-                                newRecognized += " "+recognized.substring(recognized.indexOf("recognized: \"", index), recognized.indexOf("\"", recognized.indexOf("recognized: \"", index)+13));
-                                index = recognized.indexOf("\"", recognized.indexOf("recognized: \"", index)+1)
-                            }
-                            
-                        }
-
-                        answers += newRecognized+" ";
-
-                        console.log(answers);
-                        
-                    }); */
 
                     const exec = require('child_process').execSync;
                     var pythonData = exec("Python3 ai_folder/HelloWorld.py "+filepath);
