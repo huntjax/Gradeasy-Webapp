@@ -1,33 +1,92 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="../styles/style.css">
         <Title>Gradeasy Dashboard</Title>
     </head>
 
     <body>
 
-        <%- include('partials/nav2'); -%>
+<%- include('partials/nav2'); -%>
 
-        <header>
-            <h1>Welcome, <%= user.FirstName %></h1>
-            <h1>This is the Gradeasy User Dashboard</h1>
-        </header>
-        
-        <Section id="classes">
-            <div>
-                <h2>These are your classes!</h2>
-            </div>
-            <div>
-                <ul class="classes">
-                    <li id="classCreation"><a href="classcreation/:<%= user.Userid %>">Create new Class</a></li>
-                    <% for(var i=classes.length-1; i>=0; i--){ %>
-                        <li><a href="../class/:<%=classes[i].Classid%>"><%=classes[i].ClassName%></a></li>
-                    <% }; %>
-                </ul>
-            </div>
-        </Section>
+<div class="container">
 
+    <h1 class="my-4">Welcome, <%= user.FirstName %>!
+      <small>These are you classes.</small>
+    </h1>
+    <br><br>
+    <!-- .row -->
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="https://mydreamsymbolism.com/wp-content/uploads/2019/09/Blue-Dream-Meaning-and-Symbolism-700x400.jpg" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="classcreation/:<%= user.Userid %>">Create New Class</a>
+                </h4>
+                <p class="card-text">Please click the above link to add another class.</p>
+              </div>
+            </div>
+          </div>
+
+        <% for(var i=classes.length-1; i>=0; i--){ %>
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="card h-100 bg-dark text-white">
+          <a href="#"><img class="card-img-top" src="https://mydreamsymbolism.com/wp-content/uploads/2019/09/Blue-Dream-Meaning-and-Symbolism-700x400.jpg" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="../class/:<%=classes[i].Classid%>"><%=classes[i].ClassName%></a>
+            </h4>
+            <p class="card-text">Populate with recent assignments. Populate with recent assignments. Populate with recent assignments. Populate with recent assignments.</p>
+          </div>
+        </div>
+      </div>
+      <% }; %>
+
+
+    
+    </div>
+    <!-- /.row -->
+  <!-- /.container -->
+        <br><br><br>
         <%- include('partials/footer'); -%>
 
     </body>
-</html>
+
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Pagination -->
+
+    <!-- <header>
+        <h1 class="text-center">Welcome, <%= user.FirstName %>! This is Your Dashboard.</h1>
+    </header>
+    
+    <Section id="classes">
+        <div>
+            <h2>These are your classes!</h2>
+        </div>
+        <div>
+            <ul class="classes">
+                <li id="classCreation"><a href="classcreation/:<%= user.Userid %>">Create new Class</a></li>
+                <% for(var i=classes.length-1; i>=0; i--){ %>
+                    <li><a href="../class/:<%=classes[i].Classid%>"><%=classes[i].ClassName%></a></li>
+                <% }; %>
+            </ul>
+        </div>
+    </Section> -->
+
+
