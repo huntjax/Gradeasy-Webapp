@@ -27,35 +27,54 @@
                 <p class="col-sm-4 center"><a href="studentcreation/:<%=classInfo[0].Classid%>">Add a student!</a></p>
             </div>
         </section>
-            <br>
+            <br><br>
 
         <div class="container">
+            <div class="table-responsive">
 
-            <table class="table table-striped table-dark">
+            <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Student Name</th>
                   <th>Grade</th>
                 </tr>
                 <% for(var i=studentList.length-1; i>=0; i--){ %>
-                <tr>
-                    <td><%=studentList[i].StudentName%></td>
-                    <td><%=studentList[i].Grade%></td>
-                </tr>
+                    <tbody>
+                        <tr>
+                            <td><%=studentList[i].StudentName%></td>
+                            <td><%=studentList[i].Grade%></td>
+                        </tr>
+                    </tbody>
                 <% }; %>
               </thead>
             </table>
             
           </div>
-
-          <br><br><br><br>
-          <br><br><br><br>
-          <br><br><br><br>
+        </div>
 
         <%- include('partials/footer'); -%>
 
     </body>
 </html>
+
+<style>
+
+    li{
+        list-style: none;
+    }
+    
+    
+    
+    #assignments .col {
+      border: 1px solid #c9c9c9;
+    }
+    
+    #assignmentName{
+        font-weight: bold;
+    }
+    
+    
+    </style>
 
 
 
