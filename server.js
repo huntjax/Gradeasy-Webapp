@@ -396,7 +396,17 @@ app.post('/class/assignmentedit/assignmentEdit/:id', function(request, response)
 
 
 //Print Functions go here
+app.get('/class/assignmentPrint/:id',function(request,response){
 
+    assignmentid = request.originalUrl.substring(request.originalUrl.indexOf(':')+1);
+    pool.getConnection(function(error, connection){
+        if (error) throw error;
+        connection.query('SELECT * FROM Assignments WHERE Assignmentid = ?', [assignmentid], function(error, Assignment) {
+            response.render('print', {user: request.session.user, classInfo: request.session.class, assignment: Assignment});
+            connection.release();
+        });
+    });
+});
 
 
 //Grade functions
@@ -424,15 +434,19 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
 
                 if(request.files){
                     var file = request.files.filetoupload;
-                    var filename = assignmentid+"_"+studentName+studentid+".png";
-                    var filepath = "ai_folder/scanner_pictures/"+filename;
+                    var filename = "test.png";
+                    var filepath = "ai_folder/SimpleHTR/data/"+filename;
                     file.mv(filepath, function(error){
                         if(error) throw error;
                     });
                     const { spawn } = require('child_process');
                     const py = spawn('python', ['ai_folder/HelloWorld.py', "scanner_pictures/"+filename]);
-
-                    py.stdout.on('data', function(data) {
+                    //const py = spawn('python3', ['ai_folder/SimpleHTR/src/main.py', "--wordbeamsearch"]);
+                    py.stdout.on('data', function(data,error) {
+                        if (error) throw error;
+                        //var recognized = data.toString().toLowerCase()
+                        //var newRecognized = recognized.substring(recognized.indexOf("\"")+1, recognized.indexOf("\"", recognized.indexOf("\"") + 1));
+                        //console.log(newRecognized);
                         var answerData = data.toString().toLowerCase().replace(/\r?\n|\r/g,' ');
                         var answers = answerData.split(' ');
                         answers.pop;
