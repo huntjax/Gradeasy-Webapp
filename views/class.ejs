@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
         <link rel="stylesheet" href="../styles/style.css">
-        <Title>Class Dashboard</Title>
+        <Title><%=classInfo[0].ClassName%></Title>
     </head>
 
     <body>
@@ -73,10 +74,10 @@
  <tr>
     <td><%=assignments[i].AssignmentName%></td>
     <td></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentEdit/:<%=assignments[i].Assignmentid%>" role="button"><span class="octicon-checklist"></span></a></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentPrint/:<%=assignments[i].Assignmentid%>" role="button"><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentGrade/:<%=assignments[i].Assignmentid%>" role="button"><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentResults/:<%=assignments[i].Assignmentid%>" role="button"><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentEdit/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-edit"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Print"><a class="btn btn-primary" href="assignmentPrint/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-print"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Grade"><a class="btn btn-primary" href="assignmentGrade/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-check"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="REsults"><a class="btn btn-primary" href="assignmentResults/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-bar-chart"></span></a></p></td>
     </tr>
     <% }; %>
 
