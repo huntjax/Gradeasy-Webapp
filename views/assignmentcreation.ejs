@@ -3,31 +3,247 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- CDN LINK FOR BOOTSTRAP CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="/styles/style.css">
         <Title>Class Dashboard</Title>
     </head>
 
     <body>
 
+
         <%- include('partials/nav2'); -%>
 
         <header>
-            <ul>
+            <br><br><br>
+            <!-- <ul>
                 <li>
-                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">/Dashboard</a></h4>
+                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">Back to Dashboard</a></h4>
                 </li>
                 <li>
-                    <h4><a href="../:<%=classInfo[0].Classid%>">/<%=classInfo[0].ClassName%></a></h4>
+                    <h4><a href="../:<%=classInfo[0].Classid%>">Back to <%=classInfo[0].ClassName%> Class Page</a></h4>
                 </li>
-            </ul>
-            <h1>This is the Assignment Creation page</h1>
+            </ul> -->
+    <h1 class="text-center">Create an Assignment</h1>
+    <br>
+        <section id="Students">
+            <div class="row">
+                <p class="col-sm-6 center"><a href="../../dashboard/:<%=user[0].Userid%>">Back to Dashboard</a></p>
+                <p class="col-sm-6 center"><a href="../:<%=classInfo[0].Classid%>">Back to Class Page</a></p>
+            </div>
+        </section>
         </header>
+
+        <br>
+
         <Section id="assignmentCreateForm">
-            <h1>
-                Create an Assignment!
-            </h1>
+
+        <form action="assignmentCreate/:<%=classInfo[0].Classid%>" method="POST">
+            <div class="form-row">
+                <div class="col-sm-3 center">
+                  </div>
+              <div class="col-sm-3 center">
+                <input id="AssignmentNameInput" name="assignmentName" type="text" class="form-control" placeholder="Assignment Name">
+              </div>
+              <div class="col-sm-3 center">
+                <input id="AssignmentdescriptionInput" name="descriptionName" type="text" class="form-control" placeholder="Assignment Description">
+              </div>
+              <div class="col-sm-3 center">
+              </div>
+            </div>
+            <br>
+
+            <div class="form-row">
+                <div class="col-sm-3 center"></div>
+
+                <div name="question1" class="col-sm-3 center">
+                    <input name="question1Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+
+                <div class="col-sm-3 center">
+                    <input name="question1Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question2" class="col-sm-3 center">
+                    <input name="question2Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question2Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+                
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question3" class="col-sm-3 center">
+                    <input name="question3Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question3Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+               
+
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question4" class="col-sm-3 center">
+                    <input name="question4Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question4Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+                
+
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question5" class="col-sm-3 center">
+                    <input name="question5Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question5Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+             
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question6" class="col-sm-3 center">
+                    <input name="question6Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question6Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+                
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question7" class="col-sm-3 center">
+                    <input name="question7Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question7Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question8" class="col-sm-3 center">
+                    <input name="question8Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question8Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question9" class="col-sm-3 center">
+                    <input name="question9Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question9Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+
+
+
+
+
+
+                <div class="col-sm-3 center"></div>
+
+                <div name="question10" class="col-sm-3 center">
+                    <input name="question10Answer" type="text" class="form-control" placeholder="answer">
+                </div>
+                
+                <div class="col-sm-3 center">
+                    <input name="question10Location" type="text" class="form-control" placeholder="location">
+                </div>
+                
+                <div class="col-sm-3 center"></div>
+                
+                <div class="col-sm-12 center"><br></div>
+
+                <div class="col-sm-3 center"></div>
+                <div class="col-sm-6 center"><button class="btn btn-primary btn-block" id="submit">Submit</button></div>
+                
+                
+            </div>
+            <br>
+            
+          </form>
+        </Section>
+        <br><br>
+
+        <%- include('partials/footer'); -%>
+
+    </body>
+</html>
+
+
+
+
+
+        <!-- <Section id="assignmentCreateForm">
             <form action="assignmentCreate/:<%=classInfo[0].Classid%>" method="POST">
                 <input id="AssignmentNameInput" type="text" name="assignmentName" placeholder="Assignment Name"/>
                 <input id="AssignmentdescriptionInput" type="text" name="descriptionName" placeholder="Assignment description"/>
@@ -43,9 +259,4 @@
                 <div name="question10"><input type="text" name="question10Answer" placeholder="Answer"/> <input type="text" name="question10Location" placeholder="Location"/></div>
                 <button id="submit">Submit</button> 
             </form>
-        </Section>
-
-        <%- include('partials/footer'); -%>
-
-    </body>
-</html>
+        </Section> -->
