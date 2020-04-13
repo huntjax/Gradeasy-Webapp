@@ -15,7 +15,7 @@
 
 
                     myWindow = window.open("", "_parent", "width=2408, height=3508"); // "_parent" neccessary width and height are set to that of a normal paper with default DPI printing
-                    myWindow.document.write('<html><h1 font="30px Arial"><%=assignment[0].AssignmentName%></h1></html>') // insert assignment name here
+                    myWindow.document.write('<html><h1 font="25px Arial"><%=assignment[0].AssignmentName%></h1></html>') // insert assignment name here
                     // myWindow.document.write('<html><h1 class="text-center">Name: </h1></html>') 
                     // myWindow.document.write('<html><div class="container"><div class="row"><div class="float-left col-sm-6"></div><div class="float-right col-sm-6"><h1>Name: </h1></div></div></div></html>')
                     myWindow.document.write('<canvas id="myCanvas" height=2408 width=3508 style="border:10px solid #black;"></canvas>')
@@ -57,15 +57,15 @@
 
                         // prints 'name:' and name box
                         if (i==0) {
-                            // ctx.rect(775, 10, 300, 50);
-                            // ctx.fillText("Name:",675,43);
+                            ctx.rect(100, 10, 300, 50);
+                            ctx.fillText("Name:",5,43);
                         }
                         
                         ctx.stroke();
 
                         var x = i+1; // the number the question is on
 
-                        ctx.fillText(x+'.', 20, number+190); // Writes numbner example: "1."
+                        ctx.fillText(x+'.', 20, number+190); // Writes number. example: "1."
 
                     }
 
