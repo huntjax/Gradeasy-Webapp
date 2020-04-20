@@ -106,9 +106,9 @@ def box_extraction(img_for_box_extraction_path, img_name, cropped_dir_path):
         if (w > 80 and h > 20) and w > 3 * h and h < 90:
             idx += 1
             new_img = img[y:y + h, x:x + w]
-            ret,th1 = cv2.threshold(new_img, 75, 255, cv2.THRESH_BINARY)
+            #ret,th1 = cv2.threshold(new_img, 75, 255, cv2.THRESH_BINARY)
 
-            cv2.imwrite(cropped_dir_path + '/' + img_name, th1)
+            cv2.imwrite(cropped_dir_path + '/' + img_name, new_img)
 
     # For Debugging
     # Enable this line to see all contours.

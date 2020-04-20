@@ -118,12 +118,12 @@ class Model:
 			self.decoder = tf.nn.ctc_beam_search_decoder(inputs=self.ctcIn3dTBC, sequence_length=self.seqLen, beam_width=50, merge_repeated=False)
 		elif self.decoderType == DecoderType.WordBeamSearch:
 			# import compiled word beam search operation (see https://github.com/githubharald/CTCWordBeamSearch)
-			word_beam_search_module = tf.load_op_library('TFWordBeamSearch.so')
+			word_beam_search_module = tf.load_op_library('newSimpleHTR/src/TFWordBeamSearch.so')
 
 			# prepare information about language (dictionary, characters in dataset, characters forming words) 
 			chars = str().join(self.charList)
-			wordChars = open('../model/wordCharList.txt').read().splitlines()[0]
-			corpus = open('../data/corpus.txt').read()
+			wordChars = open('newSimpleHTR/model/wordCharList.txt').read().splitlines()[0]
+			corpus = open('newSimpleHTR/data/corpus.txt').read()
 
 			# decode using the "Words" mode of word beam search
 			self.decoder = word_beam_search_module.word_beam_search(tf.nn.softmax(self.ctcIn3dTBC, dim=2), 50, 'Words', 0.0, corpus.encode('utf8'), chars.encode('utf8'), wordChars.encode('utf8'))
@@ -137,7 +137,7 @@ class Model:
 		sess=tf.Session() # TF session
 
 		saver = tf.train.Saver(max_to_keep=1) # saver saves model to file
-		modelDir = '../model/'
+		modelDir = 'newSimpleHTR/model/'
 		latestSnapshot = tf.train.latest_checkpoint(modelDir) # is there a saved model?
 
 		# if model must be restored (for inference), there must be a snapshot
@@ -221,7 +221,7 @@ class Model:
 
 	def dumpNNOutput(self, rnnOutput):
 		"dump the output of the NN to CSV file(s)"
-		dumpDir = '../dump/'
+		dumpDir = 'newSimpleHTR/dump/'
 		if not os.path.isdir(dumpDir):
 			os.mkdir(dumpDir)
 
@@ -271,5 +271,5 @@ class Model:
 	def save(self):
 		"save model to file"
 		self.snapID += 1
-		self.saver.save(self.sess, '../model/snapshot', global_step=self.snapID)
+		self.saver.save(self.sess, 'newSimpleHTR/model/snapshot', global_step=self.snapID)
  
