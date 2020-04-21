@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from PIL import Image, ImageChops
 
 
 def sort_contours(cnts, method="left-to-right"):
@@ -115,6 +116,31 @@ def box_extraction(img_for_box_extraction_path, img_name, cropped_dir_path):
     # cv2.drawContours(img, contours, -1, (0, 0, 255), 3)
     # cv2.imwrite("./Temp/img_contour.jpg", img)
 
+def trim(im):
+    bg = Image.new(im.mode, im.size, im.getpixel((0,0)))
+    diff = ImageChops.difference(im, bg)
+    diff = ImageChops.add(diff, diff, 2.0, -100)
+    bbox = diff.getbbox()
+    if bbox:
+        return im.crop(bbox)
+
+def crop_word(location):
+    img = cv2.imread(location)
+
+    # increase contrast
+    pxmin = np.min(img)
+    pxmax = np.max(img)
+    imgContrast = (img - pxmin) / (pxmax - pxmin) * 255
+
+    # increase line width
+    kernel = np.ones((3, 3), np.uint8)
+    imgMorph = cv2.erode(imgContrast, kernel, iterations=1)
+
+    # write
+    cv2.imwrite(location, imgMorph)
+
+    trimimg = trim(Image.open(location))
+    trimimg.save(location)
 
 if __name__ == '__main__':
     box_extraction("img_0.png", "./Cropped/")

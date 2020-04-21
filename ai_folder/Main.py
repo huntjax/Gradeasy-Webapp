@@ -6,6 +6,7 @@ import time
 import shutil
 # import newSimpleHTR.src.main as ai
 import cropped
+import char_detect
 
 # ai.main()
 
@@ -38,6 +39,13 @@ for filename in os.listdir(proc_dict):
             cropped.box_extraction(proc_dict, filename, crop_dict)
         except:
             print("error")
+for filename in os.listdir(crop_dict):
+    print(filename)
+    if filename.endswith(".png"):
+        # try:
+        cropped.crop_word(crop_dict + '/' + filename)
+        # except:
+        #     print("Error Cropping Word")
 
 print("AI Starting")
 #put each new file into HTR
