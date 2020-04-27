@@ -441,7 +441,7 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                     var answers= ""
 
                     const exec = require('child_process').execSync;
-                    var pythonData = exec("Python3 ai_folder/HelloWorld.py "+filepath);
+                    var pythonData = exec("Python3 ai_folder/Main.py "+filepath);
                     var recognized = pythonData.toString("utf8").toLowerCase();
                     var newRecognized = "";
                     for(i=0;i<10;i++){
@@ -519,14 +519,16 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                                     });
                                 });
                             }); 
-                        });    
+                        });
+                    connection.release();    
                     response.redirect('/class/assignmentGrade/:'+assignmentid);
                 }
             }else{
+                connection.release();
                 console.log("That student doesn\'t exist")
                 response.redirect('/class/assignmentGrade/:'+assignmentid);
             }
-            connection.release();
+            
         });
     });
 });

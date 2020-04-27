@@ -12,11 +12,11 @@ from SamplePreprocessor import preprocess
 
 class FilePaths:
 	"filenames and paths to data"
-	fnCharList = 'newSimpleHTR/model/charList.txt'
-	fnAccuracy = 'newSimpleHTR/model/accuracy.txt'
-	fnTrain = 'newSimpleHTR/data/'
-	fnInfer = 'newSimpleHTR/data/test.png'
-	fnCorpus = 'newSimpleHTR/data/corpus.txt'
+	fnCharList = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/model/charList.txt'
+	fnAccuracy = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/model/accuracy.txt'
+	fnTrain = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/data/'
+	fnInfer = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/data/test.png'
+	fnCorpus = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/data/corpus.txt'
 
 
 def train(model, loader):

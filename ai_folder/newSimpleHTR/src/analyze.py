@@ -16,11 +16,11 @@ from SamplePreprocessor import preprocess
 # constants like filepaths
 class Constants:
 	"filenames and paths to data"
-	fnCharList = 'newSimpleHTR/model/charList.txt'
-	fnAnalyze = 'newSimpleHTR/data/analyze.png'
-	fnPixelRelevance = 'newSimpleHTR/data/pixelRelevance.npy'
-	fnTranslationInvariance = 'newSimpleHTR/data/translationInvariance.npy'
-	fnTranslationInvarianceTexts = 'newSimpleHTR/data/translationInvarianceTexts.pickle'
+	fnCharList = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/model/charList.txt'
+	fnAnalyze = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/data/analyze.png'
+	fnPixelRelevance = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/data/pixelRelevance.npy'
+	fnTranslationInvariance = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/data/translationInvariance.npy'
+	fnTranslationInvarianceTexts = '../Gradeasy-Webapp/ai_folder/newSimpleHTR/data/translationInvarianceTexts.pickle'
 	gtText = 'are'
 	distribution = 'histogram' # 'histogram' or 'uniform'
 
