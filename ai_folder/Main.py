@@ -6,7 +6,7 @@ import time
 import shutil
 # import newSimpleHTR.src.main as ai
 import cropped
-import char_detect
+#import char_detect
 
 # ai.main()
 
@@ -18,7 +18,18 @@ path = 'scanner_pictures/1_HunterPace_1.png'
 try:
     os.mkdir("preprocessed_pictures")
 except OSError as error:
+    #shutil.rmtree("preprocessed_pictures")
+    #os.mkdir("preprocessed_pictures")
     print(error)
+    #continue
+
+try:
+    os.mkdir("cropped")
+except OSError as error:
+    #shutil.rmtree("cropped")
+    #os.mkdir("cropped")
+    print(error)
+    #continue
 
 #split file and place imgaes in the new folder
 
@@ -75,4 +86,9 @@ try:
     shutil.rmtree("preprocessed_pictures")
 except OSError as error:
     print("Error: %s :%s" % ("/preprocessed_pictures", error.strerror))
+
+try:
+    shutil.rmtree("cropped")
+except OSError as error:
+    print("Error: %s :%s" % ("/cropped", error.strerror))
 # sys.stdout.flush
