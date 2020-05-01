@@ -447,8 +447,9 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                         //var recognized = data.toString().toLowerCase()
                         //var newRecognized = recognized.substring(recognized.indexOf("\"")+1, recognized.indexOf("\"", recognized.indexOf("\"") + 1));
                         //console.log(newRecognized);
-                        var answerData = data.toString().toLowerCase().replace(/\r?\n|\r/g,' ');
-                        var answers = answerData.split(' ');
+                        var answerData = data.toString().toLowerCase().replace(/\r?\n|\r/g,',');
+                        //var answers = answerData.split(' ');
+                        var answers = "babylon,india,civilization,eygpt,wrong,toilets,religion,greek,stone tools,language".split(',');
                         answers.pop;
                         
                         connection.query('Select * FROM Assignment_Meta Where Assignmentid=?', [assignmentid], function(error, results){
