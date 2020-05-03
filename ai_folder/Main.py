@@ -24,7 +24,7 @@ except OSError as error:
     #os.mkdir("preprocessed_pictures")
     print(error)
     #continue
-""" 
+
 try:
     os.mkdir("../Gradeasy-Webapp/ai_folder/cropped")
 except OSError as error:
@@ -32,7 +32,7 @@ except OSError as error:
     #os.mkdir("cropped")
     print(error)
     #continue
- """
+
 #split file and place imgaes in the new folder
 
 
@@ -49,7 +49,7 @@ for r in range(50,img.shape[0],100):
     for c in range(75, 700, 625):
         cv2.imwrite(dirPath+f"preprocessed_pictures/img_{i}.png",img[r:r+100,c:c+450,:])
         i=i+1
-""" 
+
 # Crops the images in preprocessed_pictures
 proc_dict = dirPath+"preprocessed_pictures"
 crop_dict = dirPath+"cropped"
@@ -103,4 +103,9 @@ try:
 except OSError as error:
     print("Error: %s :%s" % ("/cropped", error.strerror))
 
- """
+#try:
+    #os.remove(dirPath+path)
+    #shutil.rmtree(dirPath+"scanner_pictures")
+    #os.mkdir("../Gradeasy-Webapp/ai_folder/preprocessed_pictures")
+#except OSError as error:
+    #print("Error: %s :%s" % ("/cropped", error.strerror))

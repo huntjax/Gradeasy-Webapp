@@ -431,12 +431,12 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                 if(request.files){
                     var file = request.files.filetoupload;
                     var filename = assignmentid+"_"+studentName.replace(" ","")+"_"+studentid+".png";
-                    var scannerPath = 'scanner_pictures/'+filename;
+                    var dirPath = '../Gradeasy-Webapp/ai_folder/';
                     var filepath = "scanner_pictures/"+filename;
 
                     ///Need to upload the File Here
                     
-                     file.mv(filepath, function(error){
+                     file.mv(dirPath+filepath, function(error){
                         if(error) throw error;
                         }); 
                     
@@ -533,6 +533,7 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                         connection.release();    
                         response.redirect('/class/assignmentGrade/:'+assignmentid);
                     }
+                }
 
 
 
