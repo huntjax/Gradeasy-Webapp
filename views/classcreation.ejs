@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Gradeasy Dashboard</Title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="../styles/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <Title>Create a Class</Title>
     </head>
 
     <body>
 
         <%- include('partials/nav2'); -%>
-
-        <header>
+        <!-- <header>
             <h1>This is the Class Creation page</h1>
         </header>
         <Section id="classesCreationForm">
@@ -19,9 +24,38 @@
                 <input id="classNameInput" type="text" name="className" placeholder="ClassName"/>
                 <button id="submit">Submit</button> 
             </form>
-        </Section>
+        </Section> -->
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height:100vh">
+                <div class="col-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="classCreate/:<%=userid%>" method="POST" autocomplete="off">
+                                <div class="form-group">
+                                    <img class="mb-4 centerThis" src="" alt="GradeasyLogo" width="72" height="72">
+                                    <h1 class="h3 mb-3 font-weight-heavy">Create a Class!</h1>
+                                    <input id="classNamInput" name="className" type="text" class="form-control" placeholder="Class Name" required autofocus>
+                                </div>
+                                <button id="submit" class="btn btn-primary">Submit</button>
+                                <button class="btn btn-secondary _back" type="button">Never mind</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <%- include('partials/footer'); -%>
 
     </body>
 </html>
+
+<script>
+
+    $("._back").on("click", function(e){
+        e.preventDefault();
+        window.history.back();
+    });
+    
+    </script>
+

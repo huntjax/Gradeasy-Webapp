@@ -1,50 +1,136 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Class Dashboard</Title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles/style.css">
+        <Title><%=classInfo[0].ClassName%></Title>
     </head>
 
     <body>
 
         <%- include('partials/nav2'); -%>
+        <br>
+        
+        <br><br>
 
         <header>
-            <ul>
-                <li>
-                    <h4><a href="../dashboard/:<%=user[0].Userid%>">Dashboard</a></h4>
-                </li>
-            </ul>
-            <h1><%=classInfo[0].ClassName%></h1>
-            <h3>This is the Gradeasy Class Page</h3>
+            <h1 class="center"><%=classInfo[0].ClassName%></h1>
         </header>
+        <br>
         <section id="Students">
-            <div>
-                <h2><a href="students/:<%=classInfo[0].Classid%>">Students</a></h2>
+            <div class="row">
+                <p class="col-sm-4 center"><a href="../dashboard/:<%=user[0].Userid%>">Back to Dashboard</a></p>
+                <p class="col-sm-4 center"><a href="students/:<%=classInfo[0].Classid%>">List of Students</a></p>
+                <p class="col-sm-4 center"><a href="assignmentcreation/:<%= classInfo[0].Classid %>">Create New Assignment</a></p>
             </div>
         </section>
-        <Section id="Assignments">
-            <div>
-                <h2>These are your assignments</h2>
+        <br><br>
 
-            </div>
-            <div>
-                <ul class="Assignments">
-                    <li id="assignmentCreation"><a href="assignmentcreation/:<%= classInfo[0].Classid %>">Create New Assignment</a></li>
-                    <% for(var i=assignments.length-1; i>=0; i--){ %>
-                        <li><%=assignments[i].AssignmentName%></li>
-                        <ul class="AssignmentOptions">
-                            <li id="assignmentEdit"><a href="assignmentEdit/:<%=assignments[i].Assignmentid%>">Edit</a></li>
-                            <li id="assignmentPrint"><a href="assignmentPrint/:<%=assignments[i].Assignmentid%>">Print</a></li>
-                            <li id="assignmentGrade"><a href="assignmentGrade/:<%=assignments[i].Assignmentid%>">Grade</a></li>
-                            <li id="assignmentResults"><a href="assignmentResults/:<%=assignments[i].Assignmentid%>">Results</a></li>
-                        </ul>
-                    <% }; %>
-                </ul>
-            </div>
+
+<div class="container">
+	<div class="row">
+		
+        
+        <div class="col-md-12">
+            <!-- <h1 class="center"><%=classInfo[0].ClassName%></h1> -->
+            <!-- <br> -->
+        <div class="table-responsive">
             
-        </Section>
+    <table id="mytable" class="table table-bordered table-striped">   
+        <thead>
+            <th>Assignment Name</th>
+            <th>Due Date</th>
+            <th>Edit</th>
+            <th>Print</th>
+            <th>Grade</th>
+            <th>Results</th>
+        </thead>
+<tbody>
+    <% for(var i=assignments.length-1; i>=0; i--){ %>
+ <tr>
+    <td><%=assignments[i].AssignmentName%></td>
+    <td></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary" href="assignmentEdit/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-edit"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Print"><a class="btn btn-primary" href="assignmentPrint/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-print"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Grade"><a class="btn btn-primary" href="assignmentGrade/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-check"></span></a></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="REsults"><a class="btn btn-primary" href="assignmentResults/:<%=assignments[i].Assignmentid%>" role="button"><span class="fa fa-bar-chart"></span></a></p></td>
+    </tr>
+    <% }; %>
 
-        <%- include('partials/footer'); -%>
+    </tbody>
+</table>
+            </div>
+        </div>
+	</div>
+</div>
+
+
+<%- include('partials/footer'); -%>
+
 
     </body>
 </html>
+
+<style>
+
+li{
+    list-style: none;
+}
+
+
+
+#assignments .col {
+  border: 1px solid #c9c9c9;
+}
+
+#assignmentName{
+    font-weight: bold;
+}
+
+
+</style>
+
+          <!-- <div class="container">
+
+            <% for(var i=assignments.length-1; i>=0; i--){ %> 
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th><%=assignments[i].AssignmentName%></th>
+                  <th><a href="assignmentEdit/:<%=assignments[i].Assignmentid%>">Edit</a></th>
+                  <th><a href="assignmentPrint/:<%=assignments[i].Assignmentid%>">Print</a></th>
+                  <th><a href="assignmentGrade/:<%=assignments[i].Assignmentid%>">Grade</a></th>
+                  <th><a href="assignmentResults/:<%=assignments[i].Assignmentid%>">Results</a></th>
+                </tr>
+              </thead>
+            </table>
+            <% }; %>
+          </div>
+
+          <br><br><br><br> -->
+
+
+<!-- <Section id="Assignments">
+    <div>
+        <h2 class="center">These are your assignments</h2>
+    </div>
+    <div>
+        <ul class="Assignments">
+            <li id="assignmentCreation"><a href="assignmentcreation/:<%= classInfo[0].Classid %>">Create New Assignment</a></li>
+            <% for(var i=assignments.length-1; i>=0; i--){ %>
+                <li><%=assignments[i].AssignmentName%></li>
+                <ul class="AssignmentOptions">
+                    <li id="assignmentEdit"><a href="assignmentEdit/:<%=assignments[i].Assignmentid%>">Edit</a></li>
+                    <li id="assignmentPrint"><a href="assignmentPrint/:<%=assignments[i].Assignmentid%>">Print</a></li>
+                    <li id="assignmentGrade"><a href="assignmentGrade/:<%=assignments[i].Assignmentid%>">Grade</a></li>
+                    <li id="assignmentResults"><a href="assignmentResults/:<%=assignments[i].Assignmentid%>">Results</a></li>
+                </ul>
+            <% }; %>
+        </ul>
+    </div>
+    
+</Section> -->

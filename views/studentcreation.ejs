@@ -1,28 +1,60 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Class Dashboard</Title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- CDN LINK FOR BOOTSTRAP CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/styles/style.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            
+        <Title>Student Creation</Title>
     </head>
 
     <body>
 
         <%- include('partials/nav2'); -%>
 
-        <header>
-            <h1><%=classInfo[0].ClassName%></h1>
-            <h1>This is the Student Creation page</h1>
-        </header>
-        <Section id="studentCreationForm">
-            <h1>
-                Add a Student!
-            </h1>
-            <form action="studentCreate/:<%=classInfo[0].Classid%>" method="POST">
-                <input id="StudentNameInput" type="text" name="studentName" placeholder="studentName"/>
-                <button id="submit">Submit</button> 
-            </form>
-        </Section>
+        <!-- <header>
+            <h1 class="text-center">Adding students to <%=classInfo[0].ClassName%> class</h1>
+        </header> -->
+
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height:100vh">
+                <div class="col-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="studentCreate/:<%=classInfo[0].Classid%>" method="POST" autocomplete="off">
+                                <div class="form-group">
+                                    <img class="mb-4 centerThis" src="" alt="GradeasyLogo" width="72" height="72">
+                                    <h1 class="h3 mb-3 font-weight-heavy">Add Student to <%=classInfo[0].ClassName%> class</h1>
+                                    <input id="StudentNameInput" name="studentName" type="text" class="form-control" placeholder="Student Name" required autofocus>
+                                </div>
+                                <button id="submit" class="btn btn-primary">Submit</button>
+                                <button class="btn btn-secondary _back" type="button">Never mind</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <%- include('partials/footer'); -%>
 
     </body>
 </html>
+
+<script>
+
+$("._back").on("click", function(e){
+    e.preventDefault();
+    window.history.back();
+});
+
+</script>
+
+
+

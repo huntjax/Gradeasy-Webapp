@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <Title>Gradeasy Home</Title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <Title>Gradeasy Login</Title>
+        <link rel="stylesheet" href="../styles/login.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
     <body>
 
         <%- include('partials/nav1'); -%>
 
-        <section id="loginForm">
-            <h1>Login</h1>
-            <form action="loginAuth" method="POST">
-                <input type="email" name="email" placeholder="email address"/>
-                <input type="password" name="password" placeholder="password"/>
-                <button id="submit">Submit</button>
-            </form>
-        </section>
+
+
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height:100vh">
+                <div class="col-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="loginAuth" method="POST" autocomplete="on">
+                                <div class="form-group">
+                                    <img class="mb-4 centerThis" src="" alt="GradeasyLogo" width="72" height="72">
+                                    <h1 class="h3 mb-3 font-weight-heavy">Please sign in below</h1>
+                                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                </div>
+                                <button id="submit" class="btn btn-primary">login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <%- include('partials/footer'); -%>
 
     </body>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </html>
