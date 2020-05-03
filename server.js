@@ -432,17 +432,25 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                     var file = request.files.filetoupload;
                     var filename = assignmentid+"_"+studentName.replace(" ","")+"_"+studentid+".png";
                     var scannerPath = 'scanner_pictures/'+filename;
-                    var filepath = "ai_folder/scanner_pictures/"+filename;
+                    var filepath = "scanner_pictures/"+filename;
+
+                    ///Need to upload the File Here
                     
                     /* file.mv(filepath, function(error){
                         if(error) throw error;
                     }); */
                     
+
+                    ///This stuff should wait for the file to finish uploading before it executes
+
                     var answers= ""
 
                     const exec = require('child_process').execSync;
                     var pythonData = exec("Python3 ai_folder/Main.py "+filepath);
                     var recognized = pythonData.toString("utf8").toLowerCase();
+
+                    ///This stuff onward doesn't matter or wait-for-upload
+
                     var newRecognized = "";
                     for(i=0;i<10;i++){
                         if(i==0){
@@ -454,6 +462,8 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                         }
                         
                     }
+
+
 
                     var answers = newRecognized.split(" ");
                     console.log("Answers:");
