@@ -103,9 +103,9 @@ try:
 except OSError as error:
     print("Error: %s :%s" % ("/cropped", error.strerror))
 
-#try:
-    #os.remove(dirPath+path)
+try:
+    os.remove(dirPath+path)
     #shutil.rmtree(dirPath+"scanner_pictures")
     #os.mkdir("../Gradeasy-Webapp/ai_folder/preprocessed_pictures")
-#except OSError as error:
-    #print("Error: %s :%s" % ("/cropped", error.strerror))
+except OSError as error:
+    print("Error: %s :%s" % (path, error.strerror))
