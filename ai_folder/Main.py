@@ -40,7 +40,8 @@ except OSError as error:
 img = cv2.imread(dirPath+path)
 
 
-#Might need to dump printed
+#Might need to dump printed, this will make populate the "recognized" variable in server.js with all printed text this file produced
+sys.stdout.flush
 
 
 """ i=0

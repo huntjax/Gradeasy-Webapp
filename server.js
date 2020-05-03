@@ -449,6 +449,10 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
                     var pythonData = exec("Python3 ai_folder/Main.py "+filepath);
                     var recognized = pythonData.toString("utf8").toLowerCase();
 
+                    //you must print recognized to view content the python file printed
+
+                    
+
                     ///This stuff onward doesn't matter or wait-for-upload
 
                     var newRecognized = "";
