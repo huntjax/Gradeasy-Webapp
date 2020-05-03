@@ -443,11 +443,17 @@ app.post('/class/assignmentGrade/uploadfile/:id', function(request, response){
 
                     ///This stuff should wait for the file to finish uploading before it executes
 
-                    var answers= ""
+                    setTimeout(makeThisShitWait,3000)
 
-                    const exec = require('child_process').execSync;
-                    var pythonData = exec("Python3 ai_folder/Main.py "+filepath);
-                    var recognized = pythonData.toString("utf8").toLowerCase();
+                    function makeThisShitWait(){
+                        var answers= ""
+
+                        const exec = require('child_process').execSync;
+                        var pythonData = exec("Python3 ai_folder/Main.py "+filepath);
+                        var recognized = pythonData.toString("utf8").toLowerCase();
+                    }
+
+
 
                     //you must print recognized to view content the python file printed
 
