@@ -45,7 +45,7 @@ sys.stdout.flush
 
 
 i=0
-for r in range(50,img.shape[0],100):
+for r in range(50,img.shape[0],120):
     for c in range(75, 700, 625):
         cv2.imwrite(dirPath+f"preprocessed_pictures/img_{i}.png",img[r:r+100,c:c+450,:])
         i=i+1
