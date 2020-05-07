@@ -124,7 +124,8 @@ def trim(im):
     if bbox:
         return im.crop(bbox)
 
-def crop_word(location):
+def crop_word(location, save):
+    # print('\t' + location)
     img = cv2.imread(location)
 
     # increase contrast
@@ -137,10 +138,17 @@ def crop_word(location):
     imgMorph = cv2.erode(imgContrast, kernel, iterations=1)
 
     # write
-    cv2.imwrite(location, imgMorph)
+    cv2.imwrite(save, imgMorph)
 
-    trimimg = trim(Image.open(location))
-    trimimg.save(location)
+    trimimg = trim(Image.open(save))
+
+    try:
+        img_width, img_height = trimimg.size
+        trimimg.crop((9, 0, img_width, img_height)).save(save)
+        trim(Image.open(save)).save(save)
+        # trimimg.save(location)
+    except:
+        print('\'NoneType\' object has no attribute \'save\'')
 
 if __name__ == '__main__':
     box_extraction("img_0.png", "./Cropped/")
