@@ -3,48 +3,228 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- CDN LINK FOR BOOTSTRAP CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <link rel="stylesheet" href="../styles/style.css">
-        <Title>Class Dashboard</Title>
+        <Title>Edit</Title>
     </head>
 
     <body>
 
         <%- include('partials/nav2'); -%>
 
+        <br><br><br>
+
         <header>
-            <ul>
-                <li>
-                    <h4><a href="../../dashboard/:<%=user[0].Userid%>">/Dashboard</a></h4>
-                </li>
-                <li>
-                    <h4><a href="../:<%=classInfo[0].Classid%>">/<%=classInfo[0].ClassName%></a></h4>
-                </li>
-            </ul>
-            <h1>This is the Assignment Edit page</h1>
+            <br><br><br>
+    <h1 class="text-center">Edit Your Assignment</h1>
+    <br>
+        <section id="Students">
+            <div class="row">
+                <p class="col-sm-6 text-center"><a href="../../dashboard/:<%=user[0].Userid%>">Back to Dashboard</a></p>
+                <p class="col-sm-6 text-center"><a href="../:<%=classInfo[0].Classid%>">Back to Class Page</a></p>
+            </div>
+        </section>
         </header>
+        <br>
 
         <Section id="assignmentEditForm">
-            <h1>
-                Edit an Assignment!
-            </h1>
+
             <form action="assignmentEdit/:<%=assignment[0].Assignmentid%>" method="POST">
-                <input id="AssignmentNameInput" type="text" name="assignmentName" value="<%=assignment[0].AssignmentName%>"/>
-                <input id="AssignmentdescriptionInput" type="text" name="descriptionName" value="<%=assignment[0].AssignmentDescription%>"/>
-                <div name="question1"><input type="text" name="question1Answer" value="<%=assignment_meta[0].Answer%>"/> <input type="text" name="question1Location" value="<%=assignment_meta[0].Location%>"/></div>
-                <div name="question2"><input type="text" name="question2Answer" value="<%=assignment_meta[1].Answer%>"/> <input type="text" name="question2Location" value="<%=assignment_meta[1].Location%>"/></div>
-                <div name="question3"><input type="text" name="question3Answer" value="<%=assignment_meta[2].Answer%>"/> <input type="text" name="question3Location" value="<%=assignment_meta[2].Location%>"/></div>
-                <div name="question4"><input type="text" name="question4Answer" value="<%=assignment_meta[3].Answer%>"/> <input type="text" name="question4Location" value="<%=assignment_meta[3].Location%>"/></div>
-                <div name="question5"><input type="text" name="question5Answer" value="<%=assignment_meta[4].Answer%>"/> <input type="text" name="question5Location" value="<%=assignment_meta[4].Location%>"/></div>
-                <div name="question6"><input type="text" name="question6Answer" value="<%=assignment_meta[5].Answer%>"/> <input type="text" name="question6Location" value="<%=assignment_meta[5].Location%>"/></div>
-                <div name="question7"><input type="text" name="question7Answer" value="<%=assignment_meta[6].Answer%>"/> <input type="text" name="question7Location" value="<%=assignment_meta[6].Location%>"/></div>
-                <div name="question8"><input type="text" name="question8Answer" value="<%=assignment_meta[7].Answer%>"/> <input type="text" name="question8Location" value="<%=assignment_meta[7].Location%>"/></div>
-                <div name="question9"><input type="text" name="question9Answer" value="<%=assignment_meta[8].Answer%>"/> <input type="text" name="question9Location" value="<%=assignment_meta[8].Location%>"/></div>
-                <div name="question10"><input type="text" name="question10Answer" value="<%=assignment_meta[9].Answer%>"/> <input type="text" name="question10Location" value="<%=assignment_meta[9].Location%>"/></div>
-                <button id="submit">Submit</button> 
-            </form>
-        </Section>
+                <div class="form-row">
+                    <div class="col-sm-3 center">
+                      </div>
+                  <div class="col-sm-3 center">
+                    <input id="AssignmentNameInput" name="assignmentName" type="text" class="form-control" value="<%=assignment[0].AssignmentName%>">
+                  </div>
+                  <div class="col-sm-3 center">
+                    <input id="AssignmentdescriptionInput" name="descriptionName" type="text" class="form-control" value="<%=assignment[0].AssignmentDescription%>">
+                  </div>
+                  <div class="col-sm-3 center">
+                  </div>
+                </div>
+                <br>
+    
+                <div class="form-row">
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question1" class="col-sm-3 center">
+                        <input name="question1Answer" type="text" class="form-control" value="<%=assignment_meta[0].Answer%>">
+                    </div>
+    
+                    <div class="col-sm-3 center">
+                        <input name="question1Location" type="text" class="form-control" value="<%=assignment_meta[0].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question2" class="col-sm-3 center">
+                        <input name="question2Answer" type="text" class="form-control" value="<%=assignment_meta[1].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question2Location" type="text" class="form-control" value="<%=assignment_meta[1].Location%>"> 
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+                    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question3" class="col-sm-3 center">
+                        <input name="question3Answer" type="text" class="form-control" value="<%=assignment_meta[2].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question3Location" type="text" class="form-control" value="<%=assignment_meta[2].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+                   
+    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question4" class="col-sm-3 center">
+                        <input name="question4Answer" type="text" class="form-control" value="<%=assignment_meta[3].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question4Location" type="text" class="form-control" value="<%=assignment_meta[3].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+                    
+    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question5" class="col-sm-3 center">
+                        <input name="question5Answer" type="text" class="form-control" value="<%=assignment_meta[4].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question5Location" type="text" class="form-control" value="<%=assignment_meta[4].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+                 
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question6" class="col-sm-3 center">
+                        <input name="question6Answer" type="text" class="form-control" value="<%=assignment_meta[5].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question6Location" type="text" class="form-control" value="<%=assignment_meta[5].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+                    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question7" class="col-sm-3 center">
+                        <input name="question7Answer" type="text" class="form-control" value="<%=assignment_meta[6].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question7Location" type="text" class="form-control" value="<%=assignment_meta[6].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question8" class="col-sm-3 center">
+                        <input name="question8Answer" type="text" class="form-control" value="<%=assignment_meta[7].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question8Location" type="text" class="form-control" value="<%=assignment_meta[7].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question9" class="col-sm-3 center">
+                        <input name="question9Answer" type="text" class="form-control" value="<%=assignment_meta[8].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question9Location" type="text" class="form-control" value="<%=assignment_meta[8].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+    
+    
+    
+    
+    
+    
+                    <div class="col-sm-3 center"></div>
+    
+                    <div name="question10" class="col-sm-3 center">
+                        <input name="question10Answer" type="text" class="form-control" value="<%=assignment_meta[9].Answer%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center">
+                        <input name="question10Location" type="text" class="form-control" value="<%=assignment_meta[9].Location%>">
+                    </div>
+                    
+                    <div class="col-sm-3 center"></div>
+                    
+                    <div class="col-sm-12 center"><br></div>
+    
+                    <div class="col-sm-3 center"></div>
+                    <div class="col-sm-6 center"><button class="btn btn-primary btn-block" id="submit">Submit</button></div>
+                    
+                    
+                </div>
+                <br>
+                
+              </form>
+            </Section>
+            <br><br>
 
         <%- include('partials/footer'); -%>
 
