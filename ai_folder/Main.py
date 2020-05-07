@@ -11,14 +11,14 @@ import cropped
 
 
 #get file and a location to store pictures
-dirPath='../ai_folder/'
-path = 'scanner_pictures/image0.png'
-# path = str(sys.argv[1])
+dirPath='../Gradeasy-Webapp/ai_folder/'
+#path = 'scanner_pictures/image0.png'
+path = str(sys.argv[1])
 
 #Check here to see if the file exists
 
 try:
-    os.mkdir("../ai_folder/preprocessed_pictures")
+    os.mkdir("../Gradeasy-Webapp/ai_folder/preprocessed_pictures")
 except OSError as error:
     #shutil.rmtree("preprocessed_pictures")
     #os.mkdir("preprocessed_pictures")
@@ -26,7 +26,7 @@ except OSError as error:
     #continue
 
 try:
-    os.mkdir("../ai_folder/cropped")
+    os.mkdir("../Gradeasy-Webapp/ai_folder/cropped")
 except OSError as error:
     #shutil.rmtree("cropped")
     #os.mkdir("cropped")
@@ -93,19 +93,19 @@ for i in range(10):
 #grade = ['a','a','a','Wrong','Wrong','test','test','test','test','test']
 #for i in grade:
 #    print(i)
-# try:
-#     shutil.rmtree(dirPath+"preprocessed_pictures")
-# except OSError as error:
-#     print("Error: %s :%s" % ("/preprocessed_pictures", error.strerror))
+try:
+    shutil.rmtree(dirPath+"preprocessed_pictures")
+except OSError as error:
+    print("Error: %s :%s" % ("/preprocessed_pictures", error.strerror))
 
-# try:
-#     shutil.rmtree(dirPath+"cropped")
-# except OSError as error:
-#     print("Error: %s :%s" % ("/cropped", error.strerror))
+try:
+    shutil.rmtree(dirPath+"cropped")
+except OSError as error:
+    print("Error: %s :%s" % ("/cropped", error.strerror))
 
-# try:
-#     os.remove(dirPath+path)
-#     #shutil.rmtree(dirPath+"scanner_pictures")
-#     #os.mkdir("../Gradeasy-Webapp/ai_folder/preprocessed_pictures")
-# except OSError as error:
-#     print("Error: %s :%s" % (path, error.strerror))
+try:
+    os.remove(dirPath+path)
+    #shutil.rmtree(dirPath+"scanner_pictures")
+    #os.mkdir("../Gradeasy-Webapp/ai_folder/preprocessed_pictures")
+except OSError as error:
+    print("Error: %s :%s" % (path, error.strerror))
