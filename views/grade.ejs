@@ -27,10 +27,13 @@
                                     <h1 class="h4 mb-4 font-weight-heavy">Please add a name and file</h1>
                                     <input type="text" name="studentname" class="form-control" placeholder="student name" autofocus>
                                 </div>
+                                <div id="adding_notification">
+
+                                </div>
                                 <div class="form-group">
                                     <input type="file" name="filetoupload" placeholder="student file">
                                 </div>
-                                <button id="upload" class="btn btn-primary">Submit</button>
+                                <button id="upload" class="btn btn-primary _success">Submit</button>
                                 <button class="btn btn-secondary _back" type="button">Never mind</button>
                             </form>
                         </div>
@@ -51,6 +54,11 @@
         window.history.back();
     });
     
+    $("#upload").click(function () {
+        $("#adding_notification").append('<div class="alert alert-success" role="alert">Success!</div>');
+    });
+    
+
     </script>
 
 
